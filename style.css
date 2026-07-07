@@ -352,3 +352,67 @@ footer {
     .share-card { padding: 20px; }
     .share-text { font-size: 0.88rem; }
 }
+/* ==========================================================
+   SOM ALTIN IŞILDAYAN VERSİYON KUTUSU (v.1.8)
+========================================================== */
+
+/* Başlığın içindeki alt kapsayıcıyı konumlandırmaya hazırlıyoruz */
+h1 span {
+    position: relative;
+    display: inline-block;
+}
+
+/* Versiyon kutusunun asil som altın tasarımı */
+.version-badge {
+    position: absolute;
+    top: 110%;          /* "İM" harflerinin hemen altına indirir */
+    right: 0;           /* Harflerin tam sağ hizasına (sonuna) yaslar */
+    
+    font-family: "Cinzel", serif !important; /* İstediğiniz saf Cinzel fontu */
+    font-size: 0.95rem;  /* Başlığın yanında çok kaba durmaması için ideal boyut */
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #120d04;     /* Som altın kartın içinde koyu asil yazı rengi */
+    
+    /* Gerçek som altın ve metalik yansıma efekti (Saf Likit Altın) */
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+    
+    padding: 3px 10px;
+    border-radius: 4px;
+    
+    /* Keskin metal sınır çizgisi */
+    border: 1px solid #f4df8a;
+    
+    /* Göz alıcı altın ışık süzmesi ve derinlik gölgesi */
+    box-shadow: 
+        0 0 15px rgba(255, 230, 110, 0.4), 
+        0 4px 10px rgba(0, 0, 0, 0.5);
+        
+    text-shadow: none;  /* Okunurluk için yazı arkasındaki gölgeyi sıfırlar */
+    line-height: 1;
+    white-space: nowrap;
+    
+    /* Hafif parıltı animasyonu (Sürekli tatlıca ışıldar) */
+    animation: goldGlow 3s infinite ease-in-out;
+}
+
+/* Altın ışıldama animasyon motoru */
+@keyframes goldGlow {
+    0%, 100% {
+        box-shadow: 0 0 12px rgba(255, 220, 100, 0.3), 0 4px 8px rgba(0, 0, 0, 0.5);
+        filter: brightness(1);
+    }
+    50% {
+        box-shadow: 0 0 22px rgba(255, 230, 110, 0.6), 0 4px 12px rgba(0, 0, 0, 0.6);
+        filter: brightness(1.15); /* Arada bir ışık vurmuş gibi parlar */
+    }
+}
+
+/* --- TELEFON (MOBİL) UYUMU --- */
+@media(max-width:700px){
+    .version-badge {
+        font-size: 0.7rem; /* Mobilde başlık küçüleceği için kutuyu da zarifleştiriyoruz */
+        padding: 2px 6px;
+        top: 105%;
+    }
+}
