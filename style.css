@@ -52,14 +52,34 @@ body::before {
     background: radial-gradient(circle, var(--gold2) 0%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
-    animation: floatDust 12s infinite linear;
+    /* Hem yukarı doğru yükselme hem de rüzgarla savrulma efekti */
+    animation: floatAndSway 14s infinite ease-in-out;
+    will-change: transform, opacity;
 }
 
-@keyframes floatDust {
-    0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
-    10% { opacity: 0.6; }
-    90% { opacity: 0.6; }
-    100% { transform: translateY(-10vh) translateX(50px) scale(1.2); opacity: 0; }
+@keyframes floatAndSway {
+    0% {
+        transform: translateY(105vh) translateX(0) scale(0.5);
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.6;
+    }
+    /* Yolculuğun ortasında rüzgar sağa doğru savuruyor */
+    40% {
+        transform: translateY(60vh) translateX(60px) scale(1);
+    }
+    /* Yukarı doğru çıkarken rüzgar bu sefer sola doğru yalpalıyor */
+    75% {
+        transform: translateY(30vh) translateX(-40px) scale(0.8);
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(30px) scale(1.2);
+        opacity: 0;
+    }
 }
 
 /* Yavaşça Açılan Başlık Efekti */
