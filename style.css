@@ -253,7 +253,8 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    transform: translateY(40px);
+    position: relative;
+    top: 40px;
 }
 
 .lang-text {
