@@ -1,1 +1,18 @@
 :root{--bg1:#120d03;--bg2:#3b2a08;--gold:#d4af37;--gold2:#f4df8a;--text:#f8f5ea;--glass:rgba(255,255,255,.08);--shadow:0 18px 40px rgba(0,0,0,.35)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at 20% 20%,rgba(212,175,55,.16),transparent 30%),radial-gradient(circle at 80% 30%,rgba(255,220,120,.10),transparent 25%),linear-gradient(135deg,var(--bg1),var(--bg2));min-height:100vh;overflow-x:hidden}body:before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(255,220,120,.12) 1px,transparent 1px);background-size:26px 26px;opacity:.25;pointer-events:none}header{text-align:center;padding:60px 20px 30px}h1{font-size:clamp(2.2rem,6vw,4.6rem);margin:0;color:var(--gold2);text-shadow:0 0 18px rgba(212,175,55,.35)}.subtitle{max-width:850px;margin:20px auto;line-height:1.7}.dock{display:flex;justify-content:center;align-items:flex-end;gap:16px;padding:40px 20px 60px;overflow-x:auto}.book{width:150px;transition:transform .25s,filter .25s;transform-origin:center bottom;cursor:pointer}.book img{width:100%;display:block;border-radius:14px;box-shadow:var(--shadow)}.book:hover{transform:translateY(-18px) scale(1.42);z-index:20}.dock:hover .book:not(:hover){transform:scale(.9);opacity:.75}.book:hover+.book,.book:has(+ .book:hover){transform:scale(1.15) translateY(-8px)}.card{max-width:1100px;margin:40px auto;background:var(--glass);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:30px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}.lang{background:rgba(255,255,255,.05);border-radius:18px;padding:20px}.btn{display:inline-block;margin-top:12px;text-decoration:none;color:#111;background:linear-gradient(180deg,#f8df83,#c89d1c);padding:12px 18px;border-radius:12px;font-weight:700}footer{text-align:center;padding:50px 20px}@media(max-width:700px){.dock{justify-content:flex-start}.book{width:110px}.book:hover{transform:translateY(-10px) scale(1.18)}}
+.book{
+    transform-style:preserve-3d;
+    perspective:1200px;
+}
+
+.book img{
+
+    transition:
+    transform .25s,
+    filter .25s,
+    background .25s;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+}
