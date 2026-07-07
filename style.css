@@ -132,35 +132,33 @@ h2 {
 ========================================================== */
 .dock {
     display: grid !important;
-    /* Bilgisayarlarda yan yana tam 4 eşit sütun oluşturur */
     grid-template-columns: repeat(4, 1fr); 
-    gap: 40px 35px;                         /* Kitaplar arasındaki dikey ve yatay boşluk */
+    gap: 45px 35px;                         /* Dikey ve yatay boşluklar */
     justify-content: center;
-    justify-items: center;                  /* Kitapları kendi sütunlarında tam ortalar */
+    justify-items: center;                  
     align-items: center;
-    max-width: 900px;                       /* 4 kitabın bilgisayarda aşırı yayılmasını önler */
+    max-width: 900px;                       
     margin: 40px auto 0;
     padding: 60px 20px;
-    overflow: visible !important;           /* Büyüme efektinin kesilmesini önler */
+    overflow: visible !important;           
     position: relative;
     z-index: 10;
 }
 
 .book {
     width: 100% !important;
-    max-width: 155px;                       /* Bilgisayar için ideal ve büyük kitap boyutu */
-    transform-origin: center center !important; /* Her yöne dengeli büyütme sağlar */
-    cursor: pointer;
-    text-decoration: none;
+    max-width: 155px;                       
+    position: relative;                     /* Kolondan bağımsız hareket edebilmesi için şart */
     display: inline-block;
     transform-style: preserve-3d;
     perspective: 1000px;
     z-index: 11;
     will-change: transform;
+    /* transition-property özelliğini sadece transform yaparak grid kolonunu etkilemesini engelledik */
     transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Üzerine gelinen kitabın öne çıkması */
+/* SADECE ÜZERİNE GELİNEN KAPAK BAĞIMSIZCA ÖNE ÇIKAR */
 .book:hover {
     z-index: 999 !important;
 }
@@ -259,17 +257,37 @@ footer {
 }
 
 /* --- TELEFON VE KÜÇÜK EKRAN DÜZENİ --- */
-@media(max-width:700px){
-    .dock { 
-        /* Telefonlarda otomatik olarak yan yana 2'li düzene geçer */
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 25px 20px;
-        padding: 40px 20px;
-    }
-    
-    .book { 
-        max-width: 135px; /* Telefon ekranları için en ideal ve net büyük boyut */
-    }
+.dock {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 45px 35px;                         /* Dikey ve yatay boşluklar */
+    justify-content: center;
+    justify-items: center;                  
+    align-items: center;
+    max-width: 900px;                       
+    margin: 40px auto 0;
+    padding: 60px 20px;
+    overflow: visible !important;           
+    position: relative;
+    z-index: 10;
+}
+
+.book {
+    width: 100% !important;
+    max-width: 155px;                       
+    position: relative;                     /* Kolondan bağımsız hareket edebilmesi için şart */
+    display: inline-block;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    z-index: 11;
+    will-change: transform;
+    /* transition-property özelliğini sadece transform yaparak grid kolonunu etkilemesini engelledik */
+    transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* SADECE ÜZERİNE GELİNEN KAPAK BAĞIMSIZCA ÖNE ÇIKAR */
+.book:hover {
+    z-index: 999 !important;
 }
 
 /* Çok Dilli Açıklama Alanı Düzenlemesi */
