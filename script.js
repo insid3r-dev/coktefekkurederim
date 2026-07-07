@@ -3,7 +3,7 @@
 // ==========================================================
 const books = document.querySelectorAll('.book');
 const MAX_SCALE = 1.25;
-let activeBook = null; // Şu an aktif olan kitabı hafızada tutar
+let activeBook = null; // Şu an aktif olan (açık) kitabı hafızada tutar
 
 // MÜZİK MOTORU
 const musicBtn = document.querySelector('.music-btn');
@@ -48,32 +48,29 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================================
-// FARE HAREKET VE KİLİTLEME MOTORU
+// GELİŞMİŞ FARE HAREKET VE ARKA PLAN KORUMA MOTORU
 // ==========================================================
-function handleMove(clientX, clientY) {
+function handleMove(e) {
     if (window.innerWidth <= 700) {
         resetEffects();
         return;
     }
 
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+
+    // 🛡️ KRİTİK KORUMA: Eğer fare şu an bir açıklama kutusunun veya içindeki yazının üzerindeyse,
+    // arkadaki kapakların tetiklenmesini tamamen engelle ve mevcut pencereyi açık tut.
+    if (e.target.closest('.book-intro')) {
+        return; 
+    }
+
+    let insideAnyBook = false;
+
     books.forEach(book => {
         const r = book.getBoundingClientRect();
-        const intro = book.querySelector('.book-intro');
-        let isMouseOverIntro = false;
 
-        // Açıklama penceresinin koordinatlarını kontrol et
-        if (intro) {
-            const introRect = intro.getBoundingClientRect();
-            isMouseOverIntro = (
-                clientX >= introRect.left && 
-                clientX <= introRect.right && 
-                clientY >= introRect.top && 
-                clientY <= introRect.bottom &&
-                book.classList.contains('active-pop') // Sadece açık olan pencereyi yakala
-            );
-        }
-
-        // Fare kapağın VEYA açıklama penceresinin üzerindeyse
+        // Farenin sadece kapak görselinin üzerinde olup olmadığını kontrol et
         const isMouseOverBook = (
             clientX >= r.left && 
             clientX <= r.right && 
@@ -81,47 +78,42 @@ function handleMove(clientX, clientY) {
             clientY <= r.bottom
         );
 
-        if (isMouseOverBook || isMouseOverIntro) {
+        if (isMouseOverBook) {
+            insideAnyBook = true;
+            
+            // Eğer yeni bir kapağa geçildiyse eskisini pürüzsüzce kapat
+            if (activeBook && activeBook !== book) {
+                activeBook.classList.remove('active-pop');
+                activeBook.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
+                const oldImg = activeBook.querySelector("img");
+                if (oldImg) oldImg.style.filter = "brightness(1)";
+            }
+
             activeBook = book;
             book.classList.add('active-pop');
 
-            let scale = MAX_SCALE;
-            let lift = 25;
-            let rx = 0;
-            let ry = 0;
-
-            // Fare eğer sadece kapağın üzerindeyse 3D esnemeyi yap
-            if (isMouseOverBook) {
-                const mouseX = clientX - r.left;
-                const mouseY = clientY - r.top;
-                rx = -(mouseY - r.height / 2) / 12;
-                ry = (mouseX - r.width / 2) / 10;
-            } else {
-                // Fare yazı alanına (pencereye) geçtiğinde 3D esnemeyi sabit tut (titremeyi önler)
-                rx = 0;
-                ry = 0;
-            }
+            // 3D Esneme Hesaplamaları
+            const mouseX = clientX - r.left;
+            const mouseY = clientY - r.top;
+            const rx = -(mouseY - r.height / 2) / 12;
+            const ry = (mouseX - r.width / 2) / 10;
 
             book.style.transform = `
-                translateY(-${lift}px)
-                scale(${scale})
+                translateY(-25px)
+                scale(${MAX_SCALE})
                 rotateX(${rx}deg)
                 rotateY(${ry}deg)
             `;
             
             const img = book.querySelector("img");
             if (img) img.style.filter = "brightness(1.15)";
-        } else {
-            // Fare iki alandan da çıktıysa bu kitabın efektlerini temizle
-            if (book === activeBook) {
-                book.classList.remove('active-pop');
-                book.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
-                const img = book.querySelector("img");
-                if (img) img.style.filter = "brightness(1)";
-                activeBook = null;
-            }
         }
     });
+
+    // Eğer fare hiçbir kapağın üzerinde değilse ve bir pencerenin içinde de değilse her şeyi sıfırla
+    if (!insideAnyBook && activeBook) {
+        resetEffects();
+    }
 }
 
 function resetEffects() {
@@ -138,5 +130,6 @@ function resetEffects() {
     activeBook = null;
 }
 
-window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+// Fare hareketlerini ve sayfadan ayrılma durumunu dinle
+window.addEventListener('mousemove', handleMove);
 window.addEventListener('mouseleave', resetEffects);
