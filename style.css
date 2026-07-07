@@ -555,18 +555,16 @@ h1 span {
     .book-intro { 
         position: absolute;
         display: block !important;
-        z-index: 9999;
-}
-
+        
         /* Kapağın tam alt orta noktasından başlaması için matematiksel konumlandırma */
-        top: 80% !important; /* Kapağın bittiği çizginin 2px altı */
+        top: 102% !important; /* Kapağın bittiği çizginin 2px altı */
         left: 50% !important;
         right: auto !important;
         bottom: auto !important;
         
         /* GENİŞLİK: Kapak genişliğinin tam 2 katı (140px * 2 = 280px) */
-        width: 285px !important;
-        max-width: 285px !important;
+        width: 280px !important;
+        max-width: 280px !important;
         
         /* YÜKSEKLİK: Kapak yüksekliğinin tam 1.5 katı (Yaklaşık 210px olan kapağın 1.5 katı = 315px) */
         height: 315px !important;
