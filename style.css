@@ -127,35 +127,40 @@ h2 {
     opacity: 0.85;
 }
 
-/* KESİLME SORUNU ÇÖZÜLMÜŞ DOCK ALANI */
+/* ==========================================================
+   YENİ NESİL AKILLI DOCK ALANI (PC'DE 4'LÜ, MOBİLDE 2'Lİ)
+========================================================== */
 .dock {
-    display: flex;
+    display: grid !important;
+    /* Bilgisayarlarda yan yana tam 4 eşit sütun oluşturur */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 40px 35px;                         /* Kitaplar arasındaki dikey ve yatay boşluk */
     justify-content: center;
-    align-items: flex-end;
-    gap: 20px;
-    padding: 120px 20px 60px; /* Padding-top artırılarak büyüme alanı rahatlatıldı */
-    margin-top: -40px;
-    overflow: visible !important; /* Görselin taşmasına izin verildi */
+    justify-items: center;                  /* Kitapları kendi sütunlarında tam ortalar */
+    align-items: center;
+    max-width: 900px;                       /* 4 kitabın bilgisayarda aşırı yayılmasını önler */
+    margin: 40px auto 0;
+    padding: 60px 20px;
+    overflow: visible !important;           /* Büyüme efektinin kesilmesini önler */
     position: relative;
     z-index: 10;
 }
 
 .book {
-    width: 145px;
-    transform-origin: center bottom;
+    width: 100% !important;
+    max-width: 155px;                       /* Bilgisayar için ideal ve büyük kitap boyutu */
+    transform-origin: center center !important; /* Her yöne dengeli büyütme sağlar */
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    will-change: transform;
     transform-style: preserve-3d;
     perspective: 1000px;
     z-index: 11;
-    /* EKRAN KARTINI DEVREYE SOKAN KRİTİK AYARLAR */
     will-change: transform;
     transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Üzerine gelinen kitap her şeyin üstüne çıksın */
+/* Üzerine gelinen kitabın öne çıkması */
 .book:hover {
     z-index: 999 !important;
 }
@@ -253,19 +258,17 @@ footer {
     z-index: 5;
 }
 
+/* --- TELEFON VE KÜÇÜK EKRAN DÜZENİ --- */
 @media(max-width:700px){
-    /* Telefonlarda kitapların ekrana sığması ve taşmaması için düzenleme */
     .dock { 
-        justify-content: center; 
-        gap: 8px; 
-        padding-top: 60px; /* Yukarı büyüme alanı mobil için optimize edildi */
-        padding-bottom: 30px;
-        overflow: visible !important;
+        /* Telefonlarda otomatik olarak yan yana 2'li düzene geçer */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 25px 20px;
+        padding: 40px 20px;
     }
     
-    /* Telefonlar için ideal kitap genişliği */
     .book { 
-        width: 55px; /* Ekran genişliğine göre en ideal mobil boyuttur */
+        max-width: 135px; /* Telefon ekranları için en ideal ve net büyük boyut */
     }
 }
 
