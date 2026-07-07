@@ -85,29 +85,33 @@ books.forEach(book => {
 });
 
 /* ==========================================================
-   DİNAMİK ALTIN TOZLARI MOTORU
+   DİNAMİK ALTIN TOZLARI MOTORU (RÜZGARLI & ÇOĞALTILMIŞ)
 ========================================================== */
 function createGoldDust() {
     const container = document.getElementById("goldDust");
     if(!container) return;
     
-    const dustCount = 25; // Ekranı yormayacak asil bir yoğunluk
+    // Toz miktarını daha yoğun ama göz yormayacak şekilde 50'ye çıkardık
+    const dustCount = 50; 
     
     for (let i = 0; i < dustCount; i++) {
         const dust = document.createElement("div");
         dust.classList.add("dust");
         
-        // Rastgele boyut, konum ve hız atamaları
-        const size = Math.random() * 4 + 2; // 2px - 6px arası
+        // Rastgele boyutlar (2px - 5px arası)
+        const size = Math.random() * 3 + 2; 
         dust.style.width = `${size}px`;
         dust.style.height = `${size}px`;
         
+        // Ekranın yatayında rastgele başlangıç noktası
         dust.style.left = `${Math.random() * 100}vw`;
         
-        const delay = Math.random() * 12;
+        // Hepsi aynı anda çıkmasın diye gecikme süreleri
+        const delay = Math.random() * 14;
         dust.style.animationDelay = `${delay}s`;
         
-        const duration = Math.random() * 8 + 8; // 8s - 16s arası akış
+        // Havada kalma ve savrulma hızları (farklı rüzgar etkileri hissi için)
+        const duration = Math.random() * 6 + 10; // 10s - 16s arası
         dust.style.animationDuration = `${duration}s`;
         
         container.appendChild(dust);
