@@ -586,3 +586,21 @@ h1 span {
         pointer-events: auto;
     }
 }
+/* Kapakların her zaman görünür olmasını garantiye al */
+.book {
+    opacity: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Mobil için ortaya hizalama */
+@media(max-width:700px) {
+    .book-intro {
+        position: fixed;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 99999 !important;
+        width: 80vw !important;
+    }
+}
