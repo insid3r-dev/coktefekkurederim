@@ -13,12 +13,12 @@ if (musicBtn && bgMusic) {
     musicBtn.addEventListener('click', () => {
         if (bgMusic.paused) {
             bgMusic.play().then(() => {
-                musicBtn.innerHTML = '🎵 Müziği Durdur';
+                musicBtn.innerHTML = '🎵 PAUSE';
                 musicBtn.classList.add('playing');
             }).catch(err => console.log("Müzik izni gerekiyor:", err));
         } else {
             bgMusic.pause();
-            musicBtn.innerHTML = '🎵 Müziği Başlat';
+            musicBtn.innerHTML = '🎵 PLAY';
             musicBtn.classList.remove('playing');
         }
     });
