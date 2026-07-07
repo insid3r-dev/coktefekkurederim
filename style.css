@@ -16,3 +16,14 @@
     overflow:hidden;
 
 }
+.book{
+
+    will-change:transform;
+
+    transition:
+
+    transform .18s cubic-bezier(.18,.89,.32,1.28),
+
+    filter .25s;
+
+}
