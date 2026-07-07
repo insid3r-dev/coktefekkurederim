@@ -131,34 +131,37 @@ h2 {
    YENİ NESİL AKILLI DOCK ALANI (PC'DE 4'LÜ, MOBİLDE 2'Lİ)
 ========================================================== */
 .dock {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 45px 35px;                         /* Dikey ve yatay boşluklar */
-    justify-content: center;
-    justify-items: center;                  
-    align-items: center;
-    max-width: 900px;                       
+    display: flex !important;
+    flex-wrap: wrap;                    /* Kapaklar sığmadığında alt satıra geçebilsin */
+    justify-content: center;            /* Tüm kapakları yatayda ortalar */
+    align-items: center;                /* Dikeyde tam hizalar */
+    gap: 45px 35px;                     /* Satırlar ve sütunlar arası sabit mesafe */
+    max-width: 900px;                   /* Bilgisayarda 4'lü dizilim genişlik sınırı */
     margin: 40px auto 0;
     padding: 60px 20px;
-    overflow: visible !important;           
+    overflow: visible !important;       
     position: relative;
     z-index: 10;
 }
 
 .book {
-    width: 100% !important;
-    max-width: 155px;                       
-    position: relative;                     /* Kolondan bağımsız hareket edebilmesi için şart */
-    display: inline-block;
+    /* Grid kolon baskısını kırmak için genişliği ve yüksekliği sabitledik */
+    flex: 0 0 155px;                    /* Bilgisayarda her kapağın taban genişliği tam 155px */
+    width: 155px !important;
+    height: auto;
+    
+    position: relative;                 /* Sayfadaki diğer her şeyden bağımsız katman yapar */
+    display: block;
     transform-style: preserve-3d;
     perspective: 1000px;
     z-index: 11;
     will-change: transform;
-    /* transition-property özelliğini sadece transform yaparak grid kolonunu etkilemesini engelledik */
+    
+    /* Sadece transform animasyonunu yumuşat, çevre kutuları asla etkilemesin */
     transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* SADECE ÜZERİNE GELİNEN KAPAK BAĞIMSIZCA ÖNE ÇIKAR */
+/* SADECE VE SADECE ÜZERİNE GELİNEN TEK BİR KAPAK BAĞIMSIZCA BÜYÜR VE ÖNE ÇIKAR */
 .book:hover {
     z-index: 999 !important;
 }
@@ -257,37 +260,27 @@ footer {
 }
 
 /* --- TELEFON VE KÜÇÜK EKRAN DÜZENİ --- */
-.dock {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 45px 35px;                         /* Dikey ve yatay boşluklar */
-    justify-content: center;
-    justify-items: center;                  
-    align-items: center;
-    max-width: 900px;                       
-    margin: 40px auto 0;
-    padding: 60px 20px;
-    overflow: visible !important;           
-    position: relative;
-    z-index: 10;
-}
+@media(max-width:700px){
+    .dock { 
+        max-width: 360px;               /* Telefon ekranında yan yana sadece 2 kitap sığacak alan bırakır */
+        gap: 35px 20px;                 /* Telefon için ideal alt alta/yan yana boşluk */
+        padding: 40px 10px;
+    }
+    
+    .book { 
+        /* Telefon ekranında her bir kapağın taban genişliğini sabitledik */
+        flex: 0 0 135px;
+        width: 135px !important;
+        
+        /* Önceki aşamada mobilde kilitlediğimiz sabit duruş ayarları */
+        transform: none !important; 
+        transition: none !important; 
+    }
 
-.book {
-    width: 100% !important;
-    max-width: 155px;                       
-    position: relative;                     /* Kolondan bağımsız hareket edebilmesi için şart */
-    display: inline-block;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    z-index: 11;
-    will-change: transform;
-    /* transition-property özelliğini sadece transform yaparak grid kolonunu etkilemesini engelledik */
-    transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* SADECE ÜZERİNE GELİNEN KAPAK BAĞIMSIZCA ÖNE ÇIKAR */
-.book:hover {
-    z-index: 999 !important;
+    .book:hover, .book:active {
+        transform: none !important;
+        z-index: 11 !important;
+    }
 }
 
 /* Çok Dilli Açıklama Alanı Düzenlemesi */
