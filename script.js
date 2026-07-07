@@ -1,14 +1,15 @@
 /* ==========================================================
-   ÇOK TEFEKKÜR EDERİM - Apple Dock Engine & 3D Tilt & Gold Glow
+   ÇOK TEFEKKÜR EDERİM - Premium Engine
 ========================================================== */
 
 const dock = document.querySelector(".dock");
 const books = [...document.querySelectorAll(".book")];
 
-const MAX_SCALE = 1.75;
+const MAX_SCALE = 1.70;
 const NEAR_SCALE = 1.35;
 const FAR_SCALE = 1.15;
 
+// Apple Dock Hareketi ve 3D Tilt Entegrasyonu
 dock.addEventListener("mousemove", (e) => {
     books.forEach(book => {
         const r = book.getBoundingClientRect();
@@ -18,10 +19,9 @@ dock.addEventListener("mousemove", (e) => {
         let scale = 1;
         let lift = 0;
 
-        // Mac Dock Büyüme ve Yükselme Efekti
         if (distance < 70) {
             scale = MAX_SCALE;
-            lift = 42;
+            lift = 45;
         } else if (distance < 140) {
             scale = NEAR_SCALE;
             lift = 25;
@@ -33,14 +33,12 @@ dock.addEventListener("mousemove", (e) => {
             lift = 0;
         }
 
-        // 3D Tilt (Eğilme) Hesaplaması
         const mouseX = e.clientX - r.left;
         const mouseY = e.clientY - r.top;
 
         const rx = -(mouseY - r.height / 2) / 12;
         const ry = (mouseX - r.width / 2) / 10;
 
-        // Hem Dock hem de 3D Eğilme özelliklerini aynı anda uygula
         book.style.transform = `
             translateY(-${lift}px)
             scale(${scale})
@@ -56,7 +54,7 @@ dock.addEventListener("mouseleave", () => {
     });
 });
 
-/* Kitap Kapaklarındaki Özel Işık ve Gölge Efektleri */
+// Kitap Kapak Parlamaları
 books.forEach(book => {
     const img = book.querySelector("img");
 
@@ -65,26 +63,56 @@ books.forEach(book => {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        // 3D Altın Gölgelendirme ve Netlik
         img.style.filter = `
-            brightness(1.12)
-            drop-shadow(0 18px 35px rgba(212,175,55,.45))
+            brightness(1.15)
+            drop-shadow(0 20px 40px rgba(212,175,55,.35))
         `;
 
-        // Farenin hareketine göre değişen Altın Işık Parlaması
         const glowX = (x / rect.width) * 100;
         const glowY = (y / rect.height) * 100;
 
         img.style.background = `
             radial-gradient(circle at ${glowX}% ${glowY}%,
-            rgba(255,230,150,.28),
-            transparent 55%)
+            rgba(255,230,150,.25),
+            transparent 60%)
         `;
     });
 
     book.addEventListener("mouseleave", () => {
-        // Fare ayrıldığında efektleri sıfırla
-        img.style.filter = "drop-shadow(0 15px 25px rgba(0,0,0,.35))";
+        img.style.filter = "drop-shadow(0 15px 35px rgba(0,0,0,0.5))";
         img.style.background = "transparent";
     });
 });
+
+/* ==========================================================
+   DİNAMİK ALTIN TOZLARI MOTORU
+========================================================== */
+function createGoldDust() {
+    const container = document.getElementById("goldDust");
+    if(!container) return;
+    
+    const dustCount = 25; // Ekranı yormayacak asil bir yoğunluk
+    
+    for (let i = 0; i < dustCount; i++) {
+        const dust = document.createElement("div");
+        dust.classList.add("dust");
+        
+        // Rastgele boyut, konum ve hız atamaları
+        const size = Math.random() * 4 + 2; // 2px - 6px arası
+        dust.style.width = `${size}px`;
+        dust.style.height = `${size}px`;
+        
+        dust.style.left = `${Math.random() * 100}vw`;
+        
+        const delay = Math.random() * 12;
+        dust.style.animationDelay = `${delay}s`;
+        
+        const duration = Math.random() * 8 + 8; // 8s - 16s arası akış
+        dust.style.animationDuration = `${duration}s`;
+        
+        container.appendChild(dust);
+    }
+}
+
+// Sayfa yüklendiğinde altın tozlarını başlat
+window.addEventListener("DOMContentLoaded", createGoldDust);
