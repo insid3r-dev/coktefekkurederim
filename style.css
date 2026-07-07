@@ -166,9 +166,13 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 /* Fare hareket ederken background animasyonunu yumuşatıyoruz */
-    transition: filter 0.3s ease, background-position 0.1s linear;
+    transition: filter 0.25s ease, background .25s; 
     overflow: hidden;
     will-change: filter, background;
+    /* GÖRÜNTÜYÜ JEST GİBİ NETLEŞTİREN AYARLAR */
+    image-rendering: -webkit-optimize-contrast; /* Safari ve Chrome için keskinlik */
+    image-rendering: crisp-edges;               /* Genel tarayıcı netliği */
+    transform: translateZ(0);                   /* Donanım ivmesiyle bulanıklık önleme */
 }
 
 /* SOSYAL MEDYA SİMGELERİ */
