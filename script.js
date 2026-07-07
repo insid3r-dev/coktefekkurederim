@@ -10,7 +10,7 @@ const musicBtn = document.querySelector('.music-btn');
 let bgMusic = document.getElementById('bg-music');
 
 if (!bgMusic) {
-    bgMusic = new Audio('background-music.mp3'); // Müzik dosyanızın adı/yolu
+    bgMusic = new Audio('muzik.mp3'); // Müzik dosyanızın adı/yolu
     bgMusic.id = 'bg-music';
     bgMusic.loop = true; // Müziğin sürekli başa sarıp çalması için
     document.body.appendChild(bgMusic);
