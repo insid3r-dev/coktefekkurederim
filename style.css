@@ -553,7 +553,7 @@ h1 span {
     }
     
     .book-intro { 
-        position: absolute;
+        position: fixed;
         display: block !important;
         
         /* Kapağın tam alt orta noktasından başlaması için matematiksel konumlandırma */
