@@ -248,7 +248,7 @@ footer {
 
 .subtitle {
     max-width: 850px;
-    margin: 30px auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
     gap: 18px;
