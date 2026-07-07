@@ -358,3 +358,77 @@ footer {
         font-size: 0.8rem;
     }
 }
+
+/* ==========================================================
+   SİHİRLİ GÖKTEN İNİŞ VE IŞIK SÜZMESİ ANİMASYONU
+========================================================== */
+
+/* Sayfa ilk açıldığında kapakların başlangıç durumunu hazırlıyoruz */
+.book {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.7) rotateX(20deg); /* Yukarıda, küçük ve eğik başlasın */
+    animation: magicDrop 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Sihirli düşüş ve parlama animasyon motoru */
+@keyframes magicDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.6) rotateX(30deg);
+        /* İniş anında arkada büyülü bir altın ışık süzmesi patlaması */
+        box-shadow: 0 -50px 100px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
+        filter: brightness(2) blur(1px); /* İnene kadar hafif parlasın ve netleşsin */
+    }
+    60% {
+        opacity: 1;
+        filter: brightness(1.3) blur(0);
+        box-shadow: 0 30px 50px rgba(212, 175, 55, 0.2);
+    }
+    100% {
+        opacity: 1;
+        /* Son aşamada bir önceki adımda sabitlediğimiz transform değerine pürüzsüzce oturtuyoruz */
+        transform: translateY(0) scale(1) rotateX(0) rotateY(0);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        filter: brightness(1);
+    }
+}
+
+/* KAPAKLARIN SIRAYLA (GECİKMELİ) İNMESİ (Şelale Efekti) */
+/* Her kitap bir öncekinden 0.15 saniye sonra inmeye başlar, böylece büyü sırayla akar */
+.book:nth-child(1) { animation-delay: 0.1s; }
+.book:nth-child(2) { animation-delay: 0.25s; }
+.book:nth-child(3) { animation-delay: 0.4s; }
+.book:nth-child(4) { animation-delay: 0.55s; }
+.book:nth-child(5) { animation-delay: 0.7s; }
+.book:nth-child(6) { animation-delay: 0.85s; }
+
+
+/* --- TELEFONLARDA ANİMASYON UYUMU --- */
+/* Mobilde çakışma olmaması için animasyon bittiği an mobilin o temiz sabit moduna kilitliyoruz */
+@media(max-width:700px){
+    .book {
+        animation: magicDropMobile 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+    
+    .book:nth-child(1) { animation-delay: 0.1s; }
+    .book:nth-child(2) { animation-delay: 0.25s; }
+    .book:nth-child(3) { animation-delay: 0.4s; }
+    .book:nth-child(4) { animation-delay: 0.55s; }
+    .book:nth-child(5) { animation-delay: 0.7s; }
+    .book:nth-child(6) { animation-delay: 0.85s; }
+}
+
+@keyframes magicDropMobile {
+    0% {
+        opacity: 0;
+        transform: translateY(-80px) scale(0.8);
+        box-shadow: 0 -30px 60px rgba(212, 175, 55, 0.3);
+        filter: brightness(1.5);
+    }
+    100% {
+        opacity: 1;
+        transform: none !important; /* Mobilde animasyon bitince büyüme/dönme kilitlensin */
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        filter: brightness(1);
+    }
+}
