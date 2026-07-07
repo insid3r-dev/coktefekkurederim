@@ -11,34 +11,52 @@ const FAR_SCALE = 1.15;
 
 // Hem fare hem de dokunma hareketlerini işleyen ana fonksiyon
 function handleMove(clientX, clientY) {
+    // MOBİL KORUMASI: Eğer ekran telefonsa animasyonu pasif yap (İsteğe bağlı)
+    if (window.innerWidth <= 700) {
+        resetEffects();
+        return;
+    }
+
     books.forEach(book => {
         const r = book.getBoundingClientRect();
-        const center = r.left + r.width / 2;
-        const distance = Math.abs(clientX - center);
+        
+        // Farenin kapağın MERKEZİNE olan hem X hem Y uzaklığını hesaplıyoruz (Kesin Çözüm)
+        const centerX = r.left + r.width / 2;
+        const centerY = r.top + r.height / 2;
+        
+        const distanceX = clientX - centerX;
+        const distanceY = clientY - centerY;
+        
+        // Hipotenüs teoremi ile farenin kapağa olan gerçek kuş uçuşu mesafesi
+        const realDistance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
         let scale = 1;
         let lift = 0;
 
-        // Büyüme ve Yükselme Hesaplaması
-        if (distance < 60) {
+        // Sadece farenin gerçekten ÜZERİNDE veya ÇOK YAKININDA olduğu tek bir kapak büyür
+        // Diğer satır/sütundaki kapaklar realDistance büyük olacağı için etkilenmez
+        if (realDistance < 70) {
             scale = MAX_SCALE;
-            lift = 40;
-        } else if (distance < 120) {
+            lift = 35;
+        } else if (realDistance < 130) {
             scale = NEAR_SCALE;
-            lift = 22;
-        } else if (distance < 180) {
+            lift = 18;
+        } else if (realDistance < 190) {
             scale = FAR_SCALE;
-            lift = 10;
+            lift = 8;
         } else {
             scale = 1;
             lift = 0;
         }
 
-        // 3D Tilt (Eğilme) Hesaplaması
-        const mouseX = clientX - r.left;
-        const mouseY = clientY - r.top;
-        const rx = -(mouseY - r.height / 2) / 12;
-        const ry = (mouseX - r.width / 2) / 10;
+        // 3D Tilt (Eğilme) Hesaplaması (Sadece çok yakınsa eğilsin)
+        let rx = 0, ry = 0;
+        if (realDistance < 150) {
+            const mouseX = clientX - r.left;
+            const mouseY = clientY - r.top;
+            rx = -(mouseY - r.height / 2) / 10;
+            ry = (mouseX - r.width / 2) / 8;
+        }
 
         // Efektleri Uygula
         book.style.transform = `
@@ -48,10 +66,10 @@ function handleMove(clientX, clientY) {
             rotateY(${ry}deg)
         `;
         
-        // Parlama ve Netlik efekti (CSS ile uyumlu)
+        // Parlama efekti
         const img = book.querySelector("img");
-        if(img && distance < 180) {
-            img.style.filter = "brightness(1.15)";
+        if(img) {
+            img.style.filter = realDistance < 130 ? "brightness(1.15)" : "brightness(1)";
         }
     });
 }
