@@ -155,7 +155,7 @@ h2 {
     text-align: center;
     padding: 30px 20px;
     position: relative;
-    z-index: 6;
+    z-index: 1;
 }
 .social-section h3 {
     font-family: "Cinzel Decorative", serif;
@@ -229,6 +229,8 @@ footer {
     max-width:320px;
     margin:auto;
     justify-items:center;
+    position: relative;
+    z-index: 1000;
 }
 
 .book{
@@ -316,7 +318,7 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     gap: 25px 30px; 
     position: relative;
-    z-index: 5;
+    z-index: 1;
 }
 
 .share-card {
@@ -547,52 +549,111 @@ h1 span {
 }
 
 /* ==========================================================
-   SADECE MOBİL İÇİN GEOMETRİK AÇIKLAMA BALONU TASARIMI
+   MOBİL - SAĞA / SOLA AÇILAN AÇIKLAMA PANELİ
 ========================================================== */
-@media(max-width:700px) {
-    .book { 
-        position: relative; /* Balonun kapağın altına milimetrik hizalanması için */
-        flex: 0 0 140px !important; 
-        margin: 10px 12px;
-    }
-    
-    .book-intro { 
-        position: absolute;
-        display: block !important;
-        
-        /* Kapağın tam alt orta noktasından başlaması için matematiksel konumlandırma */
-        top: 102% !important; /* Kapağın bittiği çizginin 2px altı */
-        left: 50% !important;
-        right: auto !important;
-        bottom: auto !important;
-        
-        /* GENİŞLİK: Kapak genişliğinin tam 2 katı (140px * 2 = 280px) */
-        width: 280px !important;
-        max-width: 280px !important;
-        
-        /* YÜKSEKLİK: Kapak yüksekliğinin tam 1.5 katı (Yaklaşık 210px olan kapağın 1.5 katı = 315px) */
-        height: 315px !important;
-        max-height: 315px !important;
-        
-        /* Kutuyu kendi genişliğinin yarısı kadar sola kaydırarak kapağa tam alt-orta hizalıyoruz */
-        transform: translateX(-50%) scale(0.8) !important; 
-        
-        background: rgba(18, 13, 4, 0.99); 
-        border: 1px solid #bf953f; /* Som altın ince çerçeve */
-        border-radius: 10px;
-        padding: 15px; 
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(212, 175, 55, 0.2);
-        
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        z-index: 9999;
-        
-        /* İçerikteki yazı ve butonun alt alta kusursuz hizalanması için esnek kutu */
-        display: flex !important;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+
+@media (max-width:700px){
+
+.dock{
+    display:grid !important;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    justify-items:center;
+    overflow:visible !important;
+    position:relative;
+    z-index:100;
+}
+
+.book{
+    width:135px !important;
+    margin:0 !important;
+    position:relative;
+    z-index:1;
+}
+
+/* Panelin ortak görünümü */
+
+.book-intro{
+
+    position:absolute;
+    top:50% !important;
+
+    width:260px;
+    height:300px;
+
+    background:rgba(18,13,4,.99);
+    border:1px solid #bf953f;
+    border-radius:10px;
+    padding:15px;
+
+    opacity:0;
+    pointer-events:none;
+
+    display:flex !important;
+    flex-direction:column;
+
+    transform:translateY(-50%) scale(.9);
+
+    transition:.25s;
+
+    overflow:hidden;
+
+    z-index:999999;
+}
+
+/* SOL SÜTUN */
+
+.book:nth-child(odd) .book-intro{
+
+    left:105% !important;
+    right:auto !important;
+
+}
+
+/* SAĞ SÜTUN */
+
+.book:nth-child(even) .book-intro{
+
+    right:105% !important;
+    left:auto !important;
+
+}
+
+.book.active-pop{
+
+    z-index:999999 !important;
+
+}
+
+.book.active-pop .book-intro{
+
+    opacity:1;
+    pointer-events:auto;
+    transform:translateY(-50%) scale(1);
+
+}
+
+.book-intro h4{
+
+    margin-bottom:10px;
+
+}
+
+.book-intro p{
+
+    flex:1;
+    overflow-y:auto;
+    font-size:.82rem;
+    line-height:1.5;
+
+}
+
+.mobil-book-btn{
+
+    margin-top:12px;
+
+}
+}
     
     /* Mobil Yazı Alanı Kaydırma Çubuğu (Yazı uzunsa butonun üstünde asilce kayar) */
     .book-intro p {
