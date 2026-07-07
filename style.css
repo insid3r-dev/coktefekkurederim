@@ -289,3 +289,24 @@ footer {
 .lang-text strong {
     color: var(--gold2); /* Instagram kullanıcı adını altın rengi yapar */
 }
+
+/* Bayrak Görsellerinin Hizalanması ve Estetiği */
+.flag-icon {
+    width: 24px;         /* İdeal küçük bayrak genişliği */
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;  /* Yazıyla bayrak arasındaki boşluk */
+    border-radius: 3px;  /* Premium durması için hafif yuvarlak köşeler */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Arkadaki koyuluğa uyması için hafif gölge */
+    display: inline-block;
+}
+
+.lang-text {
+    display: flex;
+    align-items: center; /* Bayrak ve yazıyı dikeyde tam ortalar */
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #e3decb;
+    opacity: 0.9;
+}
