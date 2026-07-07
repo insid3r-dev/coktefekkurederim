@@ -466,69 +466,93 @@ h1 span {
     }
 }
 /* ==========================================================
-   KAPAK BÜYÜTME VE GİRİŞ PENCERESİ MOTORU
+   YENİLENMİŞ YAN PANEL GİRİŞ MOTORU (GENİŞLETİLMİŞ)
 ========================================================== */
 
-/* Kapakların temel boyutunu bir tık büyütüyoruz */
+/* Kapakların temel boyutu ve hizalama hazırlığı */
 .book {
     position: relative;
-    flex: 0 0 175px !important; /* Eski 155px değerini 175px yaparak kapakları büyüttük */
+    flex: 0 0 175px !important;
     margin: 15px;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Kitap Giriş Penceresinin Asil Tasarımı */
+/* Kitap Giriş Penceresinin Yeni Yan Tasarımı */
 .book-intro {
     position: absolute;
-    bottom: 110%; /* Kapağın hemen üstünde belirmesi için */
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    width: 260px; /* Okunabilir asil bir genişlik */
-    background: rgba(18, 13, 4, 0.95); /* Çok koyu asil kahve/siyah tonu, hafif şeffaf */
-    border: 1px solid #bf953f; /* Som altın ince çerçeve */
-    padding: 15px;
+    top: 50%;
+    left: 105%; /* Kapağın hemen sağ yanında açılması için */
+    transform: translateY(-50%) translateX(15px);
+    
+    width: 340px; /* Okunabilirliği artırmak için genişliği 260px'ten 340px'e çıkardık */
+    max-height: 280px; /* Çok uzun yazılarda taşmayı önlemek için maksimum yükseklik */
+    overflow-y: auto; /* Eğer yazı çok çok uzun olursa kutu içinde asilce kaydırılabilir */
+    
+    background: rgba(18, 13, 4, 0.98); /* Arka planı biraz daha belirginleştirdik */
+    border: 1px solid #bf953f;
+    padding: 18px;
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.25);
+    
     opacity: 0;
-    pointer-events: none; /* Fare hareketini engellememesi için */
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 100;
     text-align: left;
 }
 
-/* Başlık alanı (Cinzel Fontu ile) */
-.book-intro h4 {
-    font-family: "Cinzel", serif !important;
-    color: #fcf6ba; /* Parıldayan altın rengi */
-    margin: 0 0 8px 0;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-    padding-bottom: 5px;
+/* AKILLI DENGELİLEYİCİ: 
+   Satırın en sağındaki kapaklarda pencerenin ekran dışına taşmaması için 
+   son iki kapağın penceresini otomatik olarak SOL tarafta açar. */
+.book:nth-child(3n) .book-intro,
+.book:last-child .book-intro {
+    left: auto;
+    right: 105%; /* Sola açılması için */
+    transform: translateY(-50%) translateX(-15px);
 }
 
-/* Giriş metni alanı (Garamond Fontu ile kitap havası) */
+/* Başlık alanı */
+.book-intro h4 {
+    font-family: "Cinzel", serif !important;
+    color: #fcf6ba;
+    margin: 0 0 10px 0;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 6px;
+}
+
+/* Giriş metni alanı */
 .book-intro p {
     font-family: "Cormorant Garamond", serif !important;
-    color: #e5e5e5;
+    color: #f0f0f0;
     margin: 0;
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: 0.9rem; /* Okumayı kolaylaştırmak için yazı boyutunu hafifçe büyüttük */
+    line-height: 1.5;
+}
+
+/* İnce Kaydırma Çubuğu Tasarımı (Kutu içi kaydırmalar için som altın rengi) */
+.book-intro::-webkit-scrollbar {
+    width: 4px;
+}
+.book-intro::-webkit-scrollbar-thumb {
+    background: #bf953f;
+    border-radius: 2px;
 }
 
 /* MOUSE ÜZERİNE GELİNCE PENCEREYİ AÇ */
 .book:hover .book-intro {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    /* Normalde sağa, yukarıdaki özel kuralda sola pürüzsüzce yaklaşır */
+    transform: translateY(-50%) translateX(0); 
 }
 
 /* --- TELEFON (MOBİL) UYUMU --- */
 @media(max-width:700px){
     .book {
-        flex: 0 0 140px !important; /* Mobilde ekranı kaplamaması için dengeli boyut */
+        flex: 0 0 140px !important;
     }
-    /* Mobilde fare olmadığı ve ekran dar olduğu için pencereleri gizliyoruz, düzeni bozmuyoruz */
     .book-intro {
-        display: none !important;
+        display: none !important; /* Mobilde ekran dar olduğu için yan pencereleri gizli tutuyoruz */
     }
 }
