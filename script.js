@@ -25,7 +25,7 @@ if (musicBtn && bgMusic) {
 }
 
 // ==========================================================
-// GİRİŞ ANİMASYONU MOTORU (Sihirli Gökten İniş Şovu)
+// GİRİŞ ANİMASYONU MOTORU
 // ==========================================================
 document.addEventListener("DOMContentLoaded", () => {
     books.forEach((book, index) => {
@@ -46,80 +46,58 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 100 * (index + 1));
     });
 
-    // 📱 MOBİL BUTON ENJEKSİYONU: 
-    // Her kitabın içindeki açıklama paneline otomatik olarak şık bir gitme butonu ekler.
-    if (window.innerWidth <= 8000) {
-        books.forEach(book => {
-            const intro = book.querySelector('.book-intro');
-            const instagramUrl = book.getAttribute('href') || 'https://www.instagram.com/coktefekkurederim/';
-            const lang = book.querySelector("img").alt;
+    // MOBİL BUTON ENJEKSİYONU
+    books.forEach(book => {
+        const intro = book.querySelector('.book-intro');
+        if (!intro) return;
+        
+        const instagramUrl = book.getAttribute('href') || 'https://www.instagram.com/coktefekkurederim/';
+        const img = book.querySelector("img");
+        const lang = img ? img.alt : "Türkçe";
 
-let buttonText = "Ücretsiz İndir →";
+        let buttonText = "Ücretsiz İndir →";
 
-switch(lang){
-    case "Türkçe":
-        buttonText = "Ücretsiz İndir →";
-        break;
-
-    case "English":
-        buttonText = "Download Free →";
-        break;
-
-    case "Español":
-        buttonText = "Descargar Gratis →";
-        break;
-
-    case "Русский":
-        buttonText = "Скачать бесплатно →";
-        break;
-
-    case "Deutsch":
-        buttonText = "Kostenlos herunterladen →";
-        break;
-
-    case "Português":
-        buttonText = "Baixar Grátis →";
-        break;
-}
-            if (intro && !intro.querySelector('.mobil-book-btn')) {
-                const btn = document.createElement('a');
-                btn.href = instagramUrl;
-                btn.target = "_blank";
-                btn.className = "mobil-book-btn";
-                btn.innerText = buttonText;
-                
-                // Butonun asil stili (Altın çerçeve, premium karanlık tema)
-                btn.style.display = "block";
-                btn.style.marginTop = "15px";
-                btn.style.padding = "10px 15px";
-                btn.style.textAlign = "center";
-                btn.style.background = "linear-gradient(135deg, #bf953f 0%, #b38728 100%)";
-                btn.style.color = "#120d04";
-                btn.style.textDecoration = "none";
-                btn.style.fontFamily = "'Cinzel', serif";
-                btn.style.fontWeight = "700";
-                btn.style.fontSize = "0.85rem";
-                btn.style.borderRadius = "5px";
-                btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
-                
-                intro.appendChild(btn);
-            }
-        });
-    }
-});
-
-
-    // Ekranda boş bir yere dokunulduğunda paneli kapatma koruması
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.book')) {
-            books.forEach(b => b.classList.remove('active-pop'));
-            activeBook = null;
+        switch(lang){
+            case "Türkçe": buttonText = "Ücretsiz İndir →"; break;
+            case "English": buttonText = "Download Free →"; break;
+            case "Español": buttonText = "Descargar Gratis →"; break;
+            case "Русский": buttonText = "Скачать бесплатно →"; break;
+            case "Deutsch": buttonText = "Kostenlos herunterladen →"; break;
+            case "Português": buttonText = "Baixar Grátis →"; break;
+        }
+        
+        if (!intro.querySelector('.mobil-book-btn')) {
+            const btn = document.createElement('a');
+            btn.href = instagramUrl;
+            btn.target = "_blank";
+            btn.className = "mobil-book-btn";
+            btn.innerText = buttonText;
+            
+            btn.style.display = "block";
+            btn.style.marginTop = "15px";
+            btn.style.padding = "10px 15px";
+            btn.style.textAlign = "center";
+            btn.style.background = "linear-gradient(135deg, #bf953f 0%, #b38728 100%)";
+            btn.style.color = "#120d04";
+            btn.style.textDecoration = "none";
+            btn.style.fontFamily = "'Cinzel', serif";
+            btn.style.fontWeight = "700";
+            btn.style.fontSize = "0.85rem";
+            btn.style.borderRadius = "5px";
+            btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+            
+            intro.appendChild(btn);
         }
     });
-} else {
-    window.addEventListener('mousemove', handleMove);
-    window.addEventListener('mouseleave', resetEffects);
-}
+});
+
+// Boş yere dokunulduğunda paneli kapatma
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.book')) {
+        books.forEach(b => b.classList.remove('active-pop'));
+        activeBook = null;
+    }
+});
 
 function resetEffects() {
     books.forEach(book => {
