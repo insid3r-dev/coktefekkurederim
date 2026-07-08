@@ -34,192 +34,54 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.innerWidth > 700) {
                 book.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
                 const img = book.querySelector("img");
-                if (img) {
-                    img.style.boxShadow = "0 30px 50px rgba(212, 175, 55, 0.3)";
-                    setTimeout(() => {
-                        img.style.boxShadow = "0 15px 35px rgba(0,0,0,0.5)";
-                    }, 800);
-                }
-            } else {
-                book.style.transform = "none";
+                if (img) img.style.transform = "translateZ(30px)";
             }
-        }, 100 * (index + 1));
+        }, index * 150);
     });
-
-    // 📱 MOBİL BUTON ENJEKSİYONU: 
-    // Her kitabın içindeki açıklama paneline otomatik olarak şık bir gitme butonu ekler.
-    if (window.innerWidth <= 700) {
-        books.forEach(book => {
-            const intro = book.querySelector('.book-intro');
-            const instagramUrl = book.getAttribute('href') || 'https://www.instagram.com/coktefekkurederim/';
-            const lang = book.querySelector("img").alt;
-
-let buttonText = "Ücretsiz İndir →";
-
-switch(lang){
-    case "Türkçe":
-        buttonText = "Ücretsiz İndir →";
-        break;
-
-    case "English":
-        buttonText = "Download Free →";
-        break;
-
-    case "Español":
-        buttonText = "Descargar Gratis →";
-        break;
-
-    case "Русский":
-        buttonText = "Скачать бесплатно →";
-        break;
-
-    case "Deutsch":
-        buttonText = "Kostenlos herunterladen →";
-        break;
-
-    case "Português":
-        buttonText = "Baixar Grátis →";
-        break;
-}
-            if (intro && !intro.querySelector('.mobil-book-btn')) {
-                const btn = document.createElement('a');
-                btn.href = instagramUrl;
-                btn.target = "_blank";
-                btn.className = "mobil-book-btn";
-                btn.innerText = buttonText;
-                
-                // Butonun asil stili (Altın çerçeve, premium karanlık tema)
-                btn.style.display = "block";
-                btn.style.marginTop = "15px";
-                btn.style.padding = "10px 15px";
-                btn.style.textAlign = "center";
-                btn.style.background = "linear-gradient(135deg, #bf953f 0%, #b38728 100%)";
-                btn.style.color = "#120d04";
-                btn.style.textDecoration = "none";
-                btn.style.fontFamily = "'Cinzel', serif";
-                btn.style.fontWeight = "700";
-                btn.style.fontSize = "0.85rem";
-                btn.style.borderRadius = "5px";
-                btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
-                
-                intro.appendChild(btn);
-            }
-        });
-    }
 });
 
 // ==========================================================
-// GELİŞMİŞ FARE HAREKET VE MOBİL TIKLAMA MOTORU
+// MASAÜSTÜ VE MOBİL ETKİLEŞİM MOTORU
 // ==========================================================
-function handleMove(e) {
-    if (window.innerWidth <= 700) return; // Mobilde mouse takibini tamamen kapat
-
-    const clientX = e.clientX;
-    const clientY = e.clientY;
-
-    if (e.target.closest('.book-intro')) {
-        return; 
-    }
-
-    let insideAnyBook = false;
-
-    books.forEach(book => {
-        const r = book.getBoundingClientRect();
-        const isMouseOverBook = (
-            clientX >= r.left && 
-            clientX <= r.right && 
-            clientY >= r.top && 
-            clientY <= r.bottom
-        );
-
-        if (isMouseOverBook) {
-            insideAnyBook = true;
-            
-            if (activeBook && activeBook !== book) {
-                activeBook.classList.remove('active-pop');
-                activeBook.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
-                const oldImg = activeBook.querySelector("img");
-                if (oldImg) oldImg.style.filter = "brightness(1)";
-            }
-
-            activeBook = book;
-            book.classList.add('active-pop');
-
-            const mouseX = clientX - r.left;
-            const mouseY = clientY - r.top;
-            const rx = -(mouseY - r.height / 2) / 12;
-            const ry = (mouseX - r.width / 2) / 10;
-
-            book.style.transform = `
-                translateY(-25px)
-                scale(${MAX_SCALE})
-                rotateX(${rx}deg)
-                rotateY(${ry}deg)
-            `;
-            
-            const img = book.querySelector("img");
-            if (img) img.style.filter = "brightness(1.15)";
-        }
-    });
-
-    if (!insideAnyBook && activeBook) {
-        resetEffects();
-    }
-}
-
-// ==========================================================
-// DİNAMİK ALTIN TOZU OLUŞTURMA MOTORU
-// ==========================================================
-function createGoldDust(count = 999) {
-    const container = document.querySelector('.gold-dust-container');
-    if (!container) return;
-
-    for (let i = 0; i < count; i++) {
-        const dust = document.createElement('div');
-        dust.className = 'dust';
-
-        // Rastgele boyut (2px ile 7px arası)
-        const size = Math.random() * 5 + 2; 
-        dust.style.width = `${size}px`;
-        dust.style.height = `${size}px`;
-
-        // Rastgele yatay konum (0% - 100%)
-        dust.style.left = `${Math.random() * 100}%`;
-
-        // Rastgele animasyon süresi ve gecikmesi (Birbirinin aynısı yapay durmasın diye)
-        const duration = Math.random() * 8 + 10; // 10s - 18s arası
-        const delay = Math.random() * 12;        // 0s - 12s arası gecikme
-        
-        dust.style.animationDuration = `${duration}s`;
-        dust.style.animationDelay = `${delay}s`;
-
-        container.appendChild(dust);
-    }
-}
-
-// Sayfa yüklendiğinde motoru çalıştır
-document.addEventListener("DOMContentLoaded", () => {
-    createGoldDust(33); // 33 adet asil altın tozu taneciği üretir
-});
-
-// 📱 MOBİL İÇİN AKILLI DOKUNMA YÖNETİMİ
 if (window.innerWidth <= 700) {
     books.forEach(book => {
         book.addEventListener('click', (e) => {
-            // Eğer doğrudan enjekte ettiğimiz butona tıklandıysa Instagram'a gitmesine izin ver
+            const intro = book.querySelector('.book-intro');
+            const lang = book.getAttribute('data-lang') || "Türkçe";
+            
+            // Dil bazlı buton metinleri
+            let buttonText = "Ücretsiz İndir →";
+            if(lang === "English") buttonText = "Download Free →";
+            else if(lang === "Español") buttonText = "Descargar Gratis →";
+            else if(lang === "Русский") buttonText = "Скачать Бесплатно →";
+            else if(lang === "Deutsch") buttonText = "Kostenlos Herunterladen →";
+            else if(lang === "Porteguês") buttonText = "Baixar Grátis →";
+
+            // HTML tarafında verdiğimiz yerel PDF linkini doğrudan çekiyoruz
+            const pdfUrl = book.getAttribute('href');
+
+            // Eğer buton daha önce oluşturulmadıysa oluştur ve ekle
+            if (intro && !intro.querySelector('.mobil-book-btn')) {
+                const btn = document.createElement('a');
+                btn.href = pdfUrl; // turkce.pdf, german.pdf vb. hedefi tam olarak açar
+                btn.target = "_blank";
+                btn.className = "mobil-book-btn";
+                btn.innerText = buttonText;
+                intro.appendChild(btn);
+            }
+
+            // Eğer alt panel açıkken kullanıcı "Ücretsiz İndir" butonuna basarsa linke gitmesine izin ver
             if (e.target.classList.contains('mobil-book-btn')) {
                 return;
             }
             
-            // Yoksa kapağa ilk tıklamada linki durdur ve alt paneli aç
+            // Kapağa ilk dokunuşta varsayılan link zıplamasını engelle ve sadece paneli aç
             e.preventDefault(); 
             
             if (book.classList.contains('active-pop')) {
-                // Eğer zaten açıksa ve tekrar kapağa dokunduysa kapat
                 book.classList.remove('active-pop');
                 activeBook = null;
             } else {
-                // Başka açık panel varsa kapat, yenisini aç
                 books.forEach(b => b.classList.remove('active-pop'));
                 book.classList.add('active-pop');
                 activeBook = book;
@@ -235,8 +97,49 @@ if (window.innerWidth <= 700) {
         }
     });
 } else {
+    // Masaüstü 3D Eğilme (Tilt) ve Fare Takip Mekanizması
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('mouseleave', resetEffects);
+}
+
+function handleMove(e) {
+    if (window.innerWidth <= 700) return;
+    
+    books.forEach(book => {
+        const rect = book.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const isInside = x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
+        
+        if (isInside) {
+            activeBook = book;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((centerY - y) / centerY) * 25;
+            const rotateY = ((x - centerX) / centerX) * 25;
+            
+            book.style.transform = `translateY(-15px) scale(${MAX_SCALE}) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            book.style.zIndex = "10";
+            
+            const intro = book.querySelector('.book-intro');
+            if (intro) {
+                intro.style.opacity = "1";
+                intro.style.pointerEvents = "auto";
+                intro.style.transform = "translateY(0) scale(1)";
+            }
+        } else if (activeBook === book) {
+            book.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
+            book.style.zIndex = "1";
+            
+            const intro = book.querySelector('.book-intro');
+            if (intro) {
+                intro.style.opacity = "0";
+                intro.style.pointerEvents = "none";
+                intro.style.transform = "translateY(10px) scale(0.95)";
+            }
+        }
+    });
 }
 
 function resetEffects() {
@@ -246,9 +149,15 @@ function resetEffects() {
             book.style.transform = "none";
         } else {
             book.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
+            book.style.zIndex = "1";
+            
+            const intro = book.querySelector('.book-intro');
+            if (intro) {
+                intro.style.opacity = "0";
+                intro.style.pointerEvents = "none";
+                intro.style.transform = "translateY(10px) scale(0.95)";
+            }
         }
-        const img = book.querySelector("img");
-        if (img) img.style.filter = "brightness(1)";
     });
     activeBook = null;
 }
