@@ -3,7 +3,6 @@
 // ==========================================================
 const books = document.querySelectorAll('.book');
 const MAX_SCALE = 1.25;
-let activeBook = null;
 
 // MÜZİK MOTORU
 const musicBtn = document.querySelector('.music-btn');
@@ -91,24 +90,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Boş yere dokunulduğunda paneli kapatma
+// ==========================================================
+// FARE HAREKETLERİ VE BÜYÜME MOTORU (Geri Eklenen Kısım)
+// ==========================================================
+if (window.innerWidth > 700) {
+    books.forEach(book => {
+        book.addEventListener('mousemove', (e) => {
+            // Aktif paneli aç
+            books.forEach(b => { if (b !== book) b.classList.remove('active-pop'); });
+            book.classList.add('active-pop');
+
+            // 3D Büyüme ve Eğilme Efekti Hesabı
+            const rect = book.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const xc = rect.width / 2;
+            const yc = rect.height / 2;
+            
+            const angleX = (yc - y) / 10;
+            const angleY = (x - xc) / 10;
+            
+            book.style.transform = `scale(${MAX_SCALE}) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+            
+            const img = book.querySelector('img');
+            if (img) img.style.filter = "brightness(1.1)";
+        });
+
+        book.addEventListener('mouseleave', () => {
+            book.classList.remove('active-pop');
+            book.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
+            const img = book.querySelector('img');
+            if (img) img.style.filter = "brightness(1)";
+        });
+    });
+} else {
+    // Mobil cihazlarda dokunulduğunda açılması için
+    books.forEach(book => {
+        book.addEventListener('click', (e) => {
+            if (!book.classList.contains('active-pop')) {
+                e.preventDefault();
+                books.forEach(b => b.classList.remove('active-pop'));
+                book.classList.add('active-pop');
+            }
+        });
+    });
+}
+
+// Ekranda boş bir yere dokunulduğunda paneli kapatma koruması
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.book')) {
         books.forEach(b => b.classList.remove('active-pop'));
-        activeBook = null;
     }
 });
-
-function resetEffects() {
-    books.forEach(book => {
-        book.classList.remove('active-pop');
-        if (window.innerWidth <= 700) {
-            book.style.transform = "none";
-        } else {
-            book.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
-        }
-        const img = book.querySelector("img");
-        if (img) img.style.filter = "brightness(1)";
-    });
-    activeBook = null;
-}
