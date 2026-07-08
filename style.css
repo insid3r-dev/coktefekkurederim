@@ -476,6 +476,7 @@ h1 span {
 }
 
 .book-intro {
+    display: block !important;
     position: absolute;
     top: 50%;
     /* 105%'ten 99%'a çekerek kutuyu kapağın 1 piksel üzerine bindirdik */
@@ -559,7 +560,7 @@ h1 span {
     /* Mobilde açıklama kutusu düzeni */
     .book-intro { 
         display: flex !important; /* Mobilde flex yapıyoruz */
-        flex-direction: column;
+        flex-direction: column !important;
         position: absolute;
         top: 105% !important;
         left: 50% !important;
@@ -586,11 +587,13 @@ h1 span {
     /* Butonun masaüstünde görünmemesi, mobilde sabitlenmesi */
     .mobil-book-btn {
         display: block !important;
+        order: -1; /* Başlığın bile üstüne çıkması için (İsterseniz h4'ün altına koyun) */
         margin-bottom: 10px;
         padding: 10px;
         text-align: center;
         background: linear-gradient(135deg, #bf953f 0%, #b38728 100%);
         color: #120d04 !important;
+        text-decoration: none;
         font-family: 'Cinzel', serif;
         font-weight: 700;
         border-radius: 4px;
@@ -605,10 +608,11 @@ h1 span {
 
 /* MASAÜSTÜ İÇİN GÜVENLİK KURALI: Butonu gizle */
 @media(min-width:701px) {
-    .mobil-book-btn { display: none !important; }
+    .mobil-book-btn {
+        display: none !important;
+    }
+
 }
-
-
 
 
 /* Buton nefes alma animasyonu */
