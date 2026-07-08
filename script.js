@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 📱 MOBİL BUTON ENJEKSİYONU: 
     // Her kitabın içindeki açıklama paneline otomatik olarak şık bir gitme butonu ekler.
-    if (window.innerWidth <= 700) {
+    if (window.innerWidth <= 8000) {
         books.forEach(book => {
             const intro = book.querySelector('.book-intro');
             const instagramUrl = book.getAttribute('href') || 'https://www.instagram.com/coktefekkurederim/';
@@ -108,89 +108,6 @@ switch(lang){
     }
 });
 
-// ==========================================================
-// GELİŞMİŞ FARE HAREKET VE MOBİL TIKLAMA MOTORU
-// ==========================================================
-function handleMove(e) {
-    if (window.innerWidth <= 700) return; // Mobilde mouse takibini tamamen kapat
-
-    const clientX = e.clientX;
-    const clientY = e.clientY;
-
-    if (e.target.closest('.book-intro')) {
-        return; 
-    }
-
-    let insideAnyBook = false;
-
-    books.forEach(book => {
-        const r = book.getBoundingClientRect();
-        const isMouseOverBook = (
-            clientX >= r.left && 
-            clientX <= r.right && 
-            clientY >= r.top && 
-            clientY <= r.bottom
-        );
-
-        if (isMouseOverBook) {
-            insideAnyBook = true;
-            
-            if (activeBook && activeBook !== book) {
-                activeBook.classList.remove('active-pop');
-                activeBook.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
-                const oldImg = activeBook.querySelector("img");
-                if (oldImg) oldImg.style.filter = "brightness(1)";
-            }
-
-            activeBook = book;
-            book.classList.add('active-pop');
-
-            const mouseX = clientX - r.left;
-            const mouseY = clientY - r.top;
-            const rx = -(mouseY - r.height / 2) / 12;
-            const ry = (mouseX - r.width / 2) / 10;
-
-            book.style.transform = `
-                translateY(-25px)
-                scale(${MAX_SCALE})
-                rotateX(${rx}deg)
-                rotateY(${ry}deg)
-            `;
-            
-            const img = book.querySelector("img");
-            if (img) img.style.filter = "brightness(1.15)";
-        }
-    });
-
-    if (!insideAnyBook && activeBook) {
-        resetEffects();
-    }
-}
-
-// 📱 MOBİL İÇİN AKILLI DOKUNMA YÖNETİMİ
-if (window.innerWidth <= 700) {
-    books.forEach(book => {
-        book.addEventListener('click', (e) => {
-            // Eğer doğrudan enjekte ettiğimiz butona tıklandıysa Instagram'a gitmesine izin ver
-            if (e.target.classList.contains('mobil-book-btn')) {
-                return;
-            }
-            
-            // Yoksa kapağa ilk tıklamada linki durdur ve alt paneli aç
-            e.preventDefault(); 
-            
-            if (book.classList.contains('active-pop')) {
-                // Eğer zaten açıksa ve tekrar kapağa dokunduysa kapat
-                book.classList.remove('active-pop');
-                activeBook = null;
-            } else {
-                // Başka açık panel varsa kapat, yenisini aç
-                books.forEach(b => b.classList.remove('active-pop'));
-                book.classList.add('active-pop');
-                activeBook = book;
-            }
-        });
-    });
 
     // Ekranda boş bir yere dokunulduğunda paneli kapatma koruması
     document.addEventListener('click', (e) => {
