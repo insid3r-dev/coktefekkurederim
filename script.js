@@ -142,17 +142,27 @@ function handleMove(e) {
 // 📱 MOBİL İÇİN AKILLI DOKUNMA YÖNETİMİ
 if (window.innerWidth <= 700) {
     books.forEach(book => {
-        // Mobilde açıklama paneli açılmasın, kapak linki (PDF) doğrudan çalışsın.
-        // Hiçbir ek "click" dinleyicisine gerek yok, <a> etiketi işini yapacaktır.
-        
-        // Sadece varsa "Instagram'da İncele" butonlarını temizleyelim (çünkü açıklama kutusu artık işlevsiz)
-        const btn = book.querySelector('.mobil-book-btn');
-        if (btn) btn.remove();
+        book.addEventListener('click', (e) => {
+            // Eğer doğrudan enjekte ettiğimiz butona tıklandıysa Instagram'a gitmesine izin ver
+            if (e.target.classList.contains('mobil-book-btn')) {
+                return;
+            }
+            
+            // Yoksa kapağa ilk tıklamada linki durdur ve alt paneli aç
+            e.preventDefault(); 
+            
+            if (book.classList.contains('active-pop')) {
+                // Eğer zaten açıksa ve tekrar kapağa dokunduysa kapat
+                book.classList.remove('active-pop');
+                activeBook = null;
+            } else {
+                // Başka açık panel varsa kapat, yenisini aç
+                books.forEach(b => b.classList.remove('active-pop'));
+                book.classList.add('active-pop');
+                activeBook = book;
+            }
+        });
     });
-} else {
-    window.addEventListener('mousemove', handleMove);
-    window.addEventListener('mouseleave', resetEffects);
-}
 
     // Ekranda boş bir yere dokunulduğunda paneli kapatma koruması
     document.addEventListener('click', (e) => {
