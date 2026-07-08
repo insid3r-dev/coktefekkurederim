@@ -723,3 +723,20 @@ h1 span {
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 }
+
+
+/* === Desktop popup override === */
+@media (min-width:701px){
+.book-intro{
+ top:0!important;left:100%!important;right:auto!important;
+ transform:none!important;width:340px;
+ display:flex!important;flex-direction:column;
+}
+.book:nth-child(even) .book-intro{
+ left:auto!important;right:100%!important;
+}
+.book.active-pop .book-intro{opacity:1!important;pointer-events:auto!important;}
+.book-read-btn{display:block;margin:0 0 14px;padding:12px;text-align:center;text-decoration:none;
+background:linear-gradient(135deg,#fcf6ba,#bf953f,#b38728);color:#120d04!important;
+font-family:'Cinzel',serif;font-weight:700;border:1px solid #f4df8a;border-radius:5px}
+}
