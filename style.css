@@ -687,3 +687,24 @@ h1 span {
 .breathing-btn {
     animation: breathing 2.8s ease-in-out infinite;
 }
+/* Masaüstü için varsayılan (Bozulmaması için) */
+.book-intro {
+    display: block !important; 
+}
+
+/* Sadece mobil için özel düzen */
+@media(max-width:700px) {
+    .book-intro { 
+        display: flex !important; /* Mobilde flex yapısına geçiyoruz */
+        flex-direction: column; 
+    }
+    
+    /* Mobil buton masaüstünde gizli kalsın, mobil açılınca görünsün */
+    .mobil-book-btn {
+        display: none !important; 
+    }
+    
+    .book.active-pop .mobil-book-btn {
+        display: block !important; /* Aktif olduğunda butonu göster */
+    }
+}
