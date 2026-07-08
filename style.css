@@ -443,3 +443,29 @@ h1 span {
     visibility: visible !important;
     display: block !important;
 }
+
+/* AÇIKLAMA KUTUSUNU ZORUNLU GÖRÜNÜR YAPMA MOTORU */
+
+/* 1. JavaScript kapağa 'active-pop' sınıfı eklediğinde kutuyu göster */
+a.book.active-pop .book-intro,
+.book.active-pop .book-intro {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    display: block !important;
+    transform: translateY(-50%) !important; /* CSS'teki orijinal dikey hizalamayı korur */
+}
+
+/* 2. Fare doğrudan kapağın (linkin) üzerindeyse de kutuyu göster (Garanti önlem) */
+a.book:hover .book-intro,
+.book:hover .book-intro {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* 3. Kutunun kendisinin görünmez kalma ihtimaline karşı başlangıç durumunu esnetelim */
+.book-intro {
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
