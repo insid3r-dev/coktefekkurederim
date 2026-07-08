@@ -58,7 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.href = instagramUrl;
                 btn.target = "_blank";
                 btn.className = "mobil-book-btn";
-                btn.innerText = "Instagram'da İncele →";
+                const lang = book.querySelector("img").alt;
+
+const buttonTexts = {
+    "Türkçe": "📖 Kitabı Oku / İndir",
+    "English": "📖 Read / Download",
+    "Español": "📖 Leer / Descargar",
+    "Русский": "📖 Читать / Скачать",
+    "Deutsch": "📖 Lesen / Herunterladen",
+    "Português": "📖 Ler / Baixar"
+};
+
+btn.innerText = buttonTexts[lang] || "📖 Read / Download";
                 
                 // Butonun asil stili (Altın çerçeve, premium karanlık tema)
                 btn.style.display = "block";
