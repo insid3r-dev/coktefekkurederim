@@ -435,3 +435,11 @@ h1 span {
     border-radius: 2px;
 }
 
+/* JavaScript tetiklendiğinde açıklama kutusunu zorunlu olarak görünür yap */
+.book.active-pop .book-intro,
+.book:hover .book-intro {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    display: block !important;
+}
