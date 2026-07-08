@@ -367,29 +367,7 @@ h1 span {
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.book-intro {
-    position: absolute;
-    top: 50%;
-    /* 105%'ten 99%'a çekerek kutuyu kapağın 1 piksel üzerine bindirdik */
-    left: 99%; 
-    transform: translateY(-50%);
-    
-    width: 340px; 
-    max-height: 280px; 
-    overflow-y: auto; 
-    
-    background: rgba(18, 13, 4, 0.98); 
-    border: 1px solid #bf953f;
-    padding: 18px;
-    border-radius: 8px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.25);
-    
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 100;
-    text-align: left;
-}
+
 
 /* Satırın en sağındaki kapaklar için SOLDA (1px bindirmeli) açılma kuralı */
 .book:nth-child(3n) .book-intro,
@@ -399,11 +377,7 @@ h1 span {
     right: 99%; 
 }
 
-/* Aktiflik Sınıfı (Mevcut JS motorunuzla tam uyumlu) */
-.book.active-pop .book-intro {
-    opacity: 1;
-    pointer-events: auto; 
-}
+
 
 /* Başlık alanı */
 .book-intro h4 {
@@ -703,4 +677,46 @@ h1 span {
         border-radius: 4px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
+}
+.book-intro{
+
+    position:absolute;
+
+    top:0;
+    left:100%;
+
+    margin-left:0;
+
+    transform:none;
+
+    width:340px;
+    max-height:300px;
+    overflow-y:auto;
+
+    background:rgba(18,13,4,.98);
+    border:1px solid #bf953f;
+    border-radius:8px;
+
+    padding:18px;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.25s;
+
+    z-index:9999;
+}
+
+.book:nth-child(odd) .book-intro{
+
+    left:100%;
+    right:auto;
+
+}
+
+.book:nth-child(even) .book-intro{
+
+    left:auto;
+    right:100%;
+
 }
