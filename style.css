@@ -401,8 +401,8 @@ h1 span {
 
 /* Aktiflik Sınıfı (Mevcut JS motorunuzla tam uyumlu) */
 .book.active-pop .book-intro {
-    opacity: 1;
-    pointer-events: auto; 
+    opacity: 1 !important;
+    pointer-events: auto !important; 
 }
 
 /* Başlık alanı */
