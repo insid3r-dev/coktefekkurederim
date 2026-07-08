@@ -127,13 +127,15 @@ h2 {
     
     /* Başlangıçta görünmez ve yukarıda dururlar (JS inderecek) */
     opacity: 0;
-    transform: translateY(-100px) scale(0.7) rotateX(20deg);
+    transform: scale(1);
     
     /* Fare hareketlerini algılayacak yumuşak geçiş kuralı */
     transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
 }
 
 .book:hover {
+    /* Sadece büyüme (zoom) efekti */
+    transform: scale(1.08) !important;
     z-index: 999 !important;
 }
 
