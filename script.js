@@ -199,7 +199,7 @@ function createGoldDust(count = 999) {
 
 // Sayfa yüklendiğinde motoru çalıştır
 document.addEventListener("DOMContentLoaded", () => {
-    createGoldDust(20); // 20 adet asil altın tozu taneciği üretir
+    createGoldDust(33); // 33 adet asil altın tozu taneciği üretir
 });
 
 // 📱 MOBİL İÇİN AKILLI DOKUNMA YÖNETİMİ
