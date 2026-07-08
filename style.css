@@ -372,7 +372,8 @@ h1 span {
     top: 50%;
     /* 105%'ten 99%'a çekerek kutuyu kapağın 1 piksel üzerine bindirdik */
     left: 99%; 
-    transform: translateY(-50%);
+  /* Bulanıklığı gidermek için güncellenen satır */
+    transform: translateY(-50%) translateZ(0);
     
     width: 340px; 
     max-height: 280px; 
@@ -389,6 +390,10 @@ h1 span {
     transition: opacity 0.3s ease;
     z-index: 100;
     text-align: left;
+    /* Keskinlik ayarları */
+    filter: none !important;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Satırın en sağındaki kapaklar için SOLDA (1px bindirmeli) açılma kuralı */
