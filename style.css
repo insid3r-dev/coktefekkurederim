@@ -549,6 +549,7 @@ h1 span {
     .book { 
         position: relative; /* Balonun kapağın altına milimetrik hizalanması için */
         flex: 0 0 140px !important; 
+        z-index: 10; /* Varsayılan z-index */
         margin: 10px 12px;
     }
     
@@ -613,11 +614,31 @@ h1 span {
     }
     
     /* Kapağa basıldığında hafifçe büyüyerek fırlama efekti */
-    .book.active-pop .book-intro {
+    .book.active-pop {
+        z-index: 9999 !important;
+    }
+    
+    .book-intro {
+        position: absolute;
+        display: block !important;
+        top: 102% !important; 
+        left: 50% !important;
+        width: 280px !important;
+        transform: translateX(-50%) scale(0.8) !important; 
+        z-index: 99999 !important; /* En üst katman */
+        /* ... diğer özellikleriniz ... */
+        opacity: 1 !important;
+        transform: translateX(-50%) scale(1) !important;
+        pointer-events: auto;
+        
+    }
+    
+   .book.active-pop .book-intro {
         opacity: 1 !important;
         transform: translateX(-50%) scale(1) !important;
         pointer-events: auto;
     }
+
     
     /* Dile Özel İndir Butonunun Premium Mobil Tasarımı */
     .mobil-book-btn {
