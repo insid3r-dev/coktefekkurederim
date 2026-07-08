@@ -91,12 +91,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================================
-// FARE HAREKETLERİ VE BÜYÜME MOTORU (Geri Eklenen Kısım)
+// FARE HAREKETLERİ VE AÇIKLAMA KUTUSU MOTORU
 // ==========================================================
 if (window.innerWidth > 700) {
     books.forEach(book => {
         book.addEventListener('mousemove', (e) => {
-            // Aktif paneli aç
+            // Diğer tüm kitaplardaki aktiflik sınıfını temizle, sadece buna ekle
             books.forEach(b => { if (b !== book) b.classList.remove('active-pop'); });
             book.classList.add('active-pop');
 
@@ -118,6 +118,7 @@ if (window.innerWidth > 700) {
         });
 
         book.addEventListener('mouseleave', () => {
+            // Fare ayrıldığında sınıfı kaldır ve eski haline döndür
             book.classList.remove('active-pop');
             book.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
             const img = book.querySelector('img');
@@ -125,7 +126,7 @@ if (window.innerWidth > 700) {
         });
     });
 } else {
-    // Mobil cihazlarda dokunulduğunda açılması için
+    // Mobil cihazlar için tıklama kontrolü
     books.forEach(book => {
         book.addEventListener('click', (e) => {
             if (!book.classList.contains('active-pop')) {
