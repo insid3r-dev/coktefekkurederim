@@ -592,7 +592,81 @@ h1 span {
         font-size: 0.85rem !important;
         line-height: 1.5;
     }
+/* Kitap Kapağı Temel Ayarları */
+    .book { 
+        position: relative; 
+        flex: 0 0 140px !important; 
+        margin: 10px 12px;
+        z-index: 10;
+        transition: none !important;
+    }
+
+    .book.active-pop {
+        z-index: 9999 !important;
+    }
+    
+    /* Açıklama Kutusu (Flex Yapısı) */
+    .book-intro { 
+        position: absolute;
+        display: flex !important; 
+        flex-direction: column; /* İçeriği dikey dizer */
+        top: 105% !important;
+        left: 50% !important;
+        width: 280px !important;
+        height: 315px !important; 
+        transform: translateX(-50%) scale(0.8) !important;
+        z-index: 99999 !important;
+        background: rgba(18, 13, 4, 0.99);
+        border: 1px solid #bf953f;
+        border-radius: 10px;
+        padding: 15px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s;
+    }
+
+    /* Başlık ve Butonun sabit kalması için */
+    .book-intro h4, 
+    .mobil-book-btn {
+        flex-shrink: 0; 
+    }
+
+    /* Buton Tasarımı (Başlığın Hemen Altı) */
+    .mobil-book-btn {
+        display: block;
+        margin-bottom: 15px;
+        padding: 10px;
+        text-align: center;
+        background: linear-gradient(135deg, #bf953f 0%, #b38728 100%);
+        color: #120d04 !important;
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* Metin alanı (Burada kaydırma gerçekleşecek) */
+    .book-intro p {
+        flex-grow: 1; 
+        overflow-y: auto;
+        font-size: 0.82rem !important;
+        line-height: 1.5;
+        color: #e5e5e5;
+        padding-right: 5px;
+    }
+
+    /* Aktifleşme anı */
+    .book.active-pop .book-intro {
+        opacity: 1 !important;
+        transform: translateX(-50%) scale(1) !important;
+        pointer-events: auto;
+    }
 }
+
+
+
 
 /* Buton nefes alma animasyonu */
 
