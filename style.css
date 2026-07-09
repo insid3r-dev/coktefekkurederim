@@ -195,18 +195,43 @@ h1 span {
     z-index: 999 !important;
 }
 
+
+
+
+/* 1. Kapağın kendisini değil, img etiketini hover ile büyütün */
 .book img {
-    width: 100%;
+    width: 175px;        /* Sabit başlangıç boyutu */
+    height: 263px;       /* En-boy oranını koruyun */
     display: block;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    transition: filter 0.25s ease, background .25s, box-shadow 0.3s ease; 
-    overflow: hidden;
+    
+    /* ÖNEMLİ: transform yerine width/height geçişi kullanıyoruz */
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.3s ease; 
+    
     will-change: filter, background, box-shadow;
     image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    transform: translateZ(0);
+    image-rendering: high-quality; /* Tarayıcıya kaliteyi önceliklendir dedik */
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
+
+/* 2. Hover olduğunda scale kullanmak yerine boyutları %5 artırın */
+.book:hover img {
+    width: 184px;        /* 175 * 1.05 = 183.75 -> 184px (Net değer) */
+    height: 276px;       /* 263 * 1.05 = 276.15 -> 276px (Net değer) */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+
+
+
+
+
+
+
 
 /* ==========================================================
    MİLİMETRİK ÇAKIŞMALI YAN PANEL GİRİŞ MOTORU (1PX BİNDİRME)
