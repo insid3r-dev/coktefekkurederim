@@ -240,10 +240,18 @@ footer {
         z-index: 10;
     }
 
-    .book:hover, .book:active {
-        transform: none !important;
-        z-index: 11 !important;
+    .social-section {
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+        z-index: 6;
     }
+
+        text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 6;
+
 }
 
 .subtitle {
@@ -560,6 +568,13 @@ h1 span {
         transition: none !important;
     }
 
+    /* SOSYAL MEDYA SİMGELERİ */
+    .social-section {
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+        z-index: 6;
+    }
     /* Aktif olan kitabı en üste çıkarıyoruz */
     .book.active-pop {
         z-index: 99999 !important;
