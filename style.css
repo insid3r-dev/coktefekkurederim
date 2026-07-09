@@ -297,7 +297,6 @@ h1 span {
     z-index: 1000;
     margin-bottom: 15px;
        /* mobildeaçıklama penceresinde buton üstte sabit kalır  SONU*/
-    width: fit-content; /* Sadece yazı kadar genişlesin */
     display: block;
     margin-top: 15px;
     padding: 10px 15px;
@@ -316,21 +315,6 @@ h1 span {
 .mobil-book-btn:hover {
     transform: scale(1.03);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Başlık alanı */
@@ -486,13 +470,15 @@ footer {
 }
 
 .music-btn {
+
+    position: fixed; /* Sitenin en tepesine göre konumlandırmak için en garantisi */
+    top: 20px;       /* Tepeden 20px uzaklık */
+    left: calc(50% + 250px); /* BURASI ÇOK ÖNEMLİ: Başlığın bittiği yer */
     display: inline-block;/* Başlığın sağında durması için */
     margin-left: 20px; /* Yaklaşık 1 cm boşluk (20px-30px arası idealdir) */
     vertical-align: top; /* Gerekirse dikey hizalama */
     z-index: 1000;/* Butonun her şeyin üstünde kalması için */
-    position: sticky; /* Ekrana yapışması için */
     top: 20px; /* Sitenin tepesinden 20px uzaklıkta tutar */
-    right: 15px;
     z-index: 9999;
     background: rgba(18, 18, 18, 0.6);
     border: 1px solid var(--gold2);
