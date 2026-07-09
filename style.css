@@ -156,15 +156,18 @@ h1 span {
 
 
 /* ==========================================================
-   KİLİTSİZ VE ÖZGÜR KAPAK ALANI
+   KİLİTSİZ VE ÖZGÜR KAPAK ALANI DOCK ALANI
 ========================================================== */
 .dock {
-    display: flex !important;
+
+    display: grid;
+    grid-template-columns: repeat(4, 155px);
+
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 50px 40px;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 40px auto 0;
     padding: 60px 20px;
     overflow: visible !important;
