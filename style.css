@@ -677,6 +677,63 @@ footer {
         z-index: 10;
     }
 
+    /* ==========================================================
+   KİLİTSİZ VE ÖZGÜR KAPAK ALANI DOCK ALANI
+========================================================== */
+.dock {
+
+    display: grid;
+    grid-template-columns: repeat(2, 135px);
+
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 35px 20px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 40px 10px;
+    overflow: visible !important;
+    position: relative;
+    z-index: 10;
+}
+
+.book {
+    flex: 0 0 135px;
+    width: 135px !important;
+    height: auto;
+    position: relative;
+    display: block;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    z-index: 11;
+    will-change: transform, opacity;
+    
+    /* Başlangıçta görünmez ve yukarıda dururlar (JS inderecek) */
+    opacity: 0;
+    transform: none !important; 
+    transition: none !important;
+}
+
+
+
+.book img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    transition: filter 0.25s ease, background .25s, box-shadow 0.3s ease; 
+    overflow: hidden;
+    will-change: filter, background, box-shadow;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transform: translateZ(0);
+}
+
+
+
+
+
+    
     .social-section {
         text-align: center;
         padding: 30px 20px;
