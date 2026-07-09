@@ -207,7 +207,6 @@ h1 span {
     overflow: hidden;
     will-change: filter, background, box-shadow;
     image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
     transform: translateZ(0);
 }
 
