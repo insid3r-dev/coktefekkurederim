@@ -656,34 +656,42 @@ footer {
 
 
 
-   .mobil-book-btn {
-       
-       position: sticky;   /* mobildeaçıklama penceresinde buton üstte sabit kalır, absolute scroll ile kaybolur sticky kaybolmaz */
-       margin-left: 0;    /* PC seçtiondan'dan gelen 500px margin-left'i sıfırlar */
-       left: auto;        /* PC seçtiondan'dan gelen 'left' değerini iptal eder */
-       top: 2px;
-       right: 10px;
-       z-index: 1000;
-       /* mobildeaçıklama penceresinde buton üstte sabit kalır  SONU*/
-       display: block;
-       padding: 10px 15px;
-       text-align: center;
-       background: linear-gradient(135deg, #bf953f 0%, #b38728 100%);
-       color: #120d04;
-       text-decoration: none;
-       font-family: 'Cinzel', serif;
-       font-weight: 700;
-       font-size: 0.85rem;
-       border-radius: 5px;
-       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-       transition: transform 0.3s ease;
-   }
+    .book-intro { 
+        position: absolute;
+        display: block !important;
+        top: 105% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
+        left: 50% !important;
+        width: 280px !important;
+        max-height: 250px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
+        transform: translateX(-50%) scale(0.8) !important; 
+        
+        background: rgba(18, 13, 4, 0.99); 
+        border: 1px solid #bf953f;
+        border-radius: 10px;
+        padding: 15px; 
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 15px rgba(212, 175, 55, 0.2);
+        
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, 
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 999999 !important; /* En üst katman garantisi */
+    }
 
-   .mobil-book-btn:hover {
-       transform: scale(1.03);
+    /* Açıklama kutusunun İçerik düzenlemeleri */
+    .book-intro p {
+        font-size: 0.85rem !important;
+        line-height: 1.5;
+    }
+   /* mobildeaçıklama penceresinde buton üstte sabit kalır */
+   .mobil-book-btn{
+       position: sticky;
+       top: 0;
+       z-index: 1000;
+      margin-bottom: 15px;
    }
-    
-}
+ 
+ }
 /* ==========================================================
         * --- TELEFON VE KÜÇÜK EKRAN DÜZENİ SONU --- *
 /* ==========================================================
