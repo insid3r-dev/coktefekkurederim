@@ -198,31 +198,31 @@ h1 span {
 
 
 
-/* 1. Kapağın kendisini değil, img etiketini hover ile büyütün */
+/* Kapakların başlangıç boyutu */
 .book img {
-    width: 175px;        /* Sabit başlangıç boyutu */
-    height: 263px;       /* En-boy oranını koruyun */
+    width: 175px;
+    height: 263px;
     display: block;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     
-    /* ÖNEMLİ: transform yerine width/height geçişi kullanıyoruz */
+    /* Yumuşak ve net geçiş için */
     transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
                 height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
                 box-shadow 0.3s ease; 
     
-    will-change: filter, background, box-shadow;
+    /* Bulanıklığı önlemek için kritik ayarlar */
     image-rendering: -webkit-optimize-contrast;
-    image-rendering: high-quality; /* Tarayıcıya kaliteyi önceliklendir dedik */
+    image-rendering: high-quality;
     backface-visibility: hidden;
-    perspective: 1000px;
+    transform: translateZ(0); 
 }
 
-/* 2. Hover olduğunda scale kullanmak yerine boyutları %5 artırın */
+/* Hover olduğunda %10 büyüme (daha belirgin) */
 .book:hover img {
-    width: 184px;        /* 175 * 1.05 = 183.75 -> 184px (Net değer) */
-    height: 276px;       /* 263 * 1.05 = 276.15 -> 276px (Net değer) */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    width: 193px;  /* 175px'in %10 büyüğü */
+    height: 289px; /* 263px'in %10 büyüğü */
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6); /* Büyüyünce gölge de derinleşmeli */
 }
 
 
