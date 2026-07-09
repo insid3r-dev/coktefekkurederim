@@ -712,10 +712,10 @@ footer {
     .book-intro { 
         position: absolute;
         display: block !important;
-        top: 105% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
+        top: 95% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
         left: 50% !important;
         width: 300px !important;
-        max-height: 280px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
+        max-height: 290px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
         transform: translateX(-50%) scale(0.8) !important; 
         
         background: rgba(18, 13, 4, 0.99); 
@@ -739,8 +739,6 @@ footer {
         text-justify: inter-word;  /* Kelimeler arası boşluğu optimize eder (daha şık durur) */
     }
 
-
-
    /* mobildeaçıklama penceresinde buton üstte sabit kalır */
    .mobil-book-btn{
        position: sticky;
@@ -749,6 +747,8 @@ footer {
       margin-bottom: 15px;
    }
 
+
+    
     /* MÜZİK BUTONU----------------------------------------- */
     .music-btn {
 
