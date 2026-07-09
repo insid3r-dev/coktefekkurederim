@@ -154,7 +154,7 @@ function handleMove(e) {
             
             if (activeBook && activeBook !== book) {
                 activeBook.classList.remove('active-pop');
-                activeBook.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
+                activeBook.style.transform = "translateY(0) scale(1)";
                 const oldImg = activeBook.querySelector("img");
                 if (oldImg) oldImg.style.filter = "brightness(1)";
             }
@@ -162,16 +162,12 @@ function handleMove(e) {
             activeBook = book;
             book.classList.add('active-pop');
 
-            const mouseX = clientX - r.left;
-            const mouseY = clientY - r.top;
-            const rx = -(mouseY - r.height / 2) / 12;
-            const ry = (mouseX - r.width / 2) / 10;
+
 
             book.style.transform = `
                 translateY(-25px)
                 scale(${MAX_SCALE})
-                rotateX(${rx}deg)
-                rotateY(${ry}deg)
+
             `;
             
             const img = book.querySelector("img");
