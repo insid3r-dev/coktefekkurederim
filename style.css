@@ -474,17 +474,11 @@ footer {
     position: fixed;        /* Ekranın en üstüne kilitler */
     top: 20px;              /* Tavandan tam 20px boşluk */
     left: 50%;              /* Ekranın tam ortasına git */
-    
-    /* İnce ayar: Başlığının genişliğinin yarısını buraya yaz */
+        /* İnce ayar: Başlığının genişliğinin yarısını buraya yaz */
     /* Başlığın 500px genişliğindeyse, buraya 250px + 20px (boşluk) ekle */
     margin-left: 370px;
 
-    display: inline-block;/* Başlığın sağında durması için */
-    margin-left: 20px; /* Yaklaşık 1 cm boşluk (20px-30px arası idealdir) */
-    vertical-align: top; /* Gerekirse dikey hizalama */
-    z-index: 1000;/* Butonun her şeyin üstünde kalması için */
-    top: 20px; /* Sitenin tepesinden 20px uzaklıkta tutar */
-    z-index: 9999;
+    z-index: 999999;/* Butonun her şeyin üstünde kalması için */
     background: rgba(18, 18, 18, 0.6);
     border: 1px solid var(--gold2);
     color: #e3decb;
@@ -636,8 +630,8 @@ footer {
         display: block !important;
         top: 105% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
         left: 50% !important;
-        width: 280px !important;
-        max-height: 250px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
+        width: 300px !important;
+        max-height: 280px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
         transform: translateX(-50%) scale(0.8) !important; 
         
         background: rgba(18, 13, 4, 0.99); 
@@ -670,7 +664,6 @@ footer {
        z-index: 1000;
        /* mobildeaçıklama penceresinde buton üstte sabit kalır  SONU*/
        display: block;
-       margin-top: 15px;
        padding: 10px 15px;
        text-align: center;
        background: linear-gradient(135deg, #bf953f 0%, #b38728 100%);
