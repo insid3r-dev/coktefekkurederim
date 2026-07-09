@@ -37,39 +37,119 @@ body::before {
     z-index: 1;
 }
 
+/* ==========================================================
+   ALTIN TOZU EFEKTİ (Premium Sürüm)
+========================================================== */
+
 .gold-dust-container {
     position: fixed;
     inset: 0;
+    overflow: hidden;
     pointer-events: none;
     z-index: 2;
-    overflow: hidden;
 }
+
 .dust {
     position: absolute;
-    background: radial-gradient(circle, var(--gold2) 0%, transparent 70%);
+    left: 0;
+    top: 0;
+
     border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(255,245,185,.95) 0%,
+            rgba(244,223,138,.75) 30%,
+            rgba(212,175,55,.35) 60%,
+            transparent 100%);
+
+    filter: blur(.4px);
+
     opacity: 0;
-    animation: floatAndSway 14s infinite ease-in-out;
+
     will-change: transform, opacity;
+
+    animation:
+        floatAndSway var(--speed,14s) linear infinite,
+        sparkle var(--sparkle,2.8s) ease-in-out infinite;
 }
+
+/* Ana yükselme hareketi */
 
 @keyframes floatAndSway {
-    0% { transform: translateY(105vh) translateX(0) scale(0.5); opacity: 0; }
-    5% { opacity: 0.6; }
-    40% { transform: translateY(60vh) translateX(60px) scale(1); }
-    75% { transform: translateY(30vh) translateX(-40px) scale(0.8); }
-    90% { opacity: 0.6; }
-    100% { transform: translateY(-10vh) translateX(30px) scale(1.2); opacity: 0; }
+
+    0%{
+        transform:
+            translate3d(0,120vh,0)
+            rotate(0deg)
+            scale(.35);
+        opacity:0;
+    }
+
+    8%{
+        opacity:.25;
+    }
+
+    18%{
+        opacity:.85;
+    }
+
+    30%{
+        transform:
+            translate3d(20px,80vh,0)
+            rotate(45deg)
+            scale(.9);
+    }
+
+    45%{
+        transform:
+            translate3d(-18px,58vh,0)
+            rotate(95deg)
+            scale(1);
+    }
+
+    60%{
+        transform:
+            translate3d(42px,35vh,0)
+            rotate(160deg)
+            scale(.85);
+    }
+
+    78%{
+        transform:
+            translate3d(-30px,12vh,0)
+            rotate(235deg)
+            scale(.65);
+    }
+
+    92%{
+        opacity:.15;
+    }
+
+    100%{
+        transform:
+            translate3d(15px,-20vh,0)
+            rotate(360deg)
+            scale(.25);
+        opacity:0;
+    }
 }
 
-.fade-in-title {
-    animation: fadeInPage 2.5s ease-out forwards;
-    opacity: 0;
-}
+/* Parıltı */
 
-@keyframes fadeInPage {
-    0% { opacity: 0; transform: translateY(15px); filter: blur(5px); }
-    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+@keyframes sparkle{
+
+    0%,100%{
+        filter:
+            blur(.4px)
+            brightness(.95);
+    }
+
+    50%{
+        filter:
+            blur(.1px)
+            brightness(1.45);
+    }
 }
 
 header {
