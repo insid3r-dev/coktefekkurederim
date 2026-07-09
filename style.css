@@ -471,9 +471,14 @@ footer {
 
 .music-btn {
 
-    position: fixed; /* Sitenin en tepesine göre konumlandırmak için en garantisi */
-    top: 20px;       /* Tepeden 20px uzaklık */
-    left: calc(50% + 250px); /* BURASI ÇOK ÖNEMLİ: Başlığın bittiği yer */
+    position: fixed;        /* Ekranın en üstüne kilitler */
+    top: 20px;              /* Tavandan tam 20px boşluk */
+    left: 50%;              /* Ekranın tam ortasına git */
+    
+    /* İnce ayar: Başlığının genişliğinin yarısını buraya yaz */
+    /* Başlığın 500px genişliğindeyse, buraya 250px + 20px (boşluk) ekle */
+    margin-left: 370px;
+
     display: inline-block;/* Başlığın sağında durması için */
     margin-left: 20px; /* Yaklaşık 1 cm boşluk (20px-30px arası idealdir) */
     vertical-align: top; /* Gerekirse dikey hizalama */
@@ -660,9 +665,9 @@ footer {
    .mobil-book-btn {
        /* mobildeaçıklama penceresinde buton üstte sabit kalır */
        position: sticky;
-       top: 0;
+       top: 5px;
+       right: 5px;
        z-index: 1000;
-       margin-bottom: 15px;
        /* mobildeaçıklama penceresinde buton üstte sabit kalır  SONU*/
        display: block;
        margin-top: 15px;
