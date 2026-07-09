@@ -476,7 +476,7 @@ footer {
     left: 50%;              /* Ekranın tam ortasına git */
         /* İnce ayar: Başlığının genişliğinin yarısını buraya yaz */
     /* Başlığın 500px genişliğindeyse, buraya 250px + 20px (boşluk) ekle */
-    margin-left: 420px;
+    margin-left: 500px;
 
     z-index: 999999;/* Butonun her şeyin üstünde kalması için */
     background: rgba(18, 18, 18, 0.6);
@@ -657,10 +657,10 @@ footer {
 
 
    .mobil-book-btn {
-       /* mobildeaçıklama penceresinde buton üstte sabit kalır */
-       position: sticky;
-       top: 1px;
-       right: 1px;
+       
+       position: sticky;   /* mobildeaçıklama penceresinde buton üstte sabit kalır, absolute scroll ile kaybolur sticky kaybolmaz */
+       top: 2px;
+       right: 10px;
        z-index: 1000;
        /* mobildeaçıklama penceresinde buton üstte sabit kalır  SONU*/
        display: block;
