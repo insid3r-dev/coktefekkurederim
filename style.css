@@ -198,36 +198,33 @@ h1 span {
 
 
 
-/* 1. Kapakların başlangıç hali (Netleştirici Ayarlar) */
+/* 1. Kapakların yeni BAŞLANGIÇ hali (200px) */
 .book img {
-    width: 175px;
-    height: 263px;
+    width: 200px;       /* Eskiden 175px idi */
+    height: 300px;      /* Eskiden 263px idi */
     display: block;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     
-    /* Yumuşak geçiş için */
-    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
-                height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
-                box-shadow 0.3s ease; 
+    /* Yumuşak geçiş */
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                height 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.4s ease; 
     
-    /* Bulanıklığı bitiren "keskinleştirici" komutlar */
+    /* Netlik Ayarları (Kritik) */
     image-rendering: -webkit-optimize-contrast;
-    image-rendering: high-quality;
+    image-rendering: crisp-edges;
     backface-visibility: hidden;
-    transform: translateZ(0); 
-    -webkit-font-smoothing: subpixel-antialiased;
+    transform: translateZ(0);
 }
 
-/* 2. Hover hali (Matematiksel olarak oranlanmış değerler) */
+/* 2. Kapakların yeni HOVER hali (250px - %125 büyümüş hali) */
 .book:hover img {
-    /* 175 * 1.10 = 192.5 -> 193px */
-    /* 263 * 1.10 = 289.3 -> 290px (Oranı bozmamak için 290 yaptık) */
-    width: 193px;  
-    height: 290px; 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-}
-
+    /* 200 * 1.25 = 250px (Gen) */
+    /* 300 * 1.25 = 375px (Yük) */
+    width: 250px; 
+    height: 375px; 
+    box-shadow: 0 35px 70px rgba(0,0,0,0.8); /* Gölgeyi daha da derinleştirdik */
 
 
 
