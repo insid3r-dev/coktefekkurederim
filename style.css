@@ -472,11 +472,11 @@ footer {
 .music-btn {
 
     position: fixed;        /* Ekranın en üstüne kilitler */
-    top: 20px;              /* Tavandan tam 20px boşluk */
+    top: 5px;              /* Tavandan tam 20px boşluk */
     left: 50%;              /* Ekranın tam ortasına git */
         /* İnce ayar: Başlığının genişliğinin yarısını buraya yaz */
     /* Başlığın 500px genişliğindeyse, buraya 250px + 20px (boşluk) ekle */
-    margin-left: 370px;
+    margin-left: 420px;
 
     z-index: 999999;/* Butonun her şeyin üstünde kalması için */
     background: rgba(18, 18, 18, 0.6);
@@ -659,8 +659,8 @@ footer {
    .mobil-book-btn {
        /* mobildeaçıklama penceresinde buton üstte sabit kalır */
        position: sticky;
-       top: 5px;
-       right: 5px;
+       top: 1px;
+       right: 1px;
        z-index: 1000;
        /* mobildeaçıklama penceresinde buton üstte sabit kalır  SONU*/
        display: block;
