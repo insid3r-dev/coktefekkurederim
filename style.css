@@ -289,6 +289,15 @@ h1 span {
     pointer-events: auto; 
 }
 
+/* AÇIKLAMA İÇİNDEKİ BUTON KISMI*/
+.mobil-book-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    width: fit-content; /* Sadece yazı kadar genişlesin */
+    margin-top: 20px;
+}
+
+
 /* Başlık alanı */
 .book-intro h4 {
     font-family: "Cinzel", serif !important;
@@ -626,15 +635,37 @@ footer {
         font-size: 0.85rem !important;
         line-height: 1.5;
     }
-   /* mobildeaçıklama penceresinde buton üstte sabit kalır */
-   .mobil-book-btn{
+
+
+
+
+   .mobil-book-btn {
+       /* mobildeaçıklama penceresinde buton üstte sabit kalır */
        position: sticky;
        top: 0;
        z-index: 1000;
-      margin-bottom: 15px;
+       margin-bottom: 15px;
+       /* mobildeaçıklama penceresinde buton üstte sabit kalır  SONU*/
+       display: block;
+       margin-top: 15px;
+       padding: 10px 15px;
+       text-align: center;
+       background: linear-gradient(135deg, #bf953f 0%, #b38728 100%);
+       color: #120d04;
+       text-decoration: none;
+       font-family: 'Cinzel', serif;
+       font-weight: 700;
+       font-size: 0.85rem;
+       border-radius: 5px;
+       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+       transition: transform 0.3s ease;
    }
- 
- }
+
+   .mobil-book-btn:hover {
+       transform: scale(1.03);
+   }
+    
+}
 /* ==========================================================
         * --- TELEFON VE KÜÇÜK EKRAN DÜZENİ SONU --- *
 /* ==========================================================
