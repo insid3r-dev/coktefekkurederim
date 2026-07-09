@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 📱 MOBİL BUTON ENJEKSİYONU: 
     // Her kitabın içindeki açıklama paneline otomatik olarak şık bir gitme butonu ekler.
-    if (window.innerWidth <= 700) {
+    
         books.forEach(book => {
             const intro = book.querySelector('.book-intro');
             const instagramUrl = book.getAttribute('href') || 'https://www.instagram.com/coktefekkurederim/';
@@ -71,25 +71,12 @@ const buttonTexts = {
 
 btn.innerText = buttonTexts[lang] || "📖 Read / Download";
                 
-                // Butonun asil stili (Altın çerçeve, premium karanlık tema)
-                btn.style.display = "block";
-                btn.style.marginTop = "15px";
-                btn.style.padding = "10px 15px";
-                btn.style.textAlign = "center";
-                btn.style.background = "linear-gradient(135deg, #bf953f 0%, #b38728 100%)";
-                btn.style.color = "#120d04";
-                btn.style.textDecoration = "none";
-                btn.style.fontFamily = "'Cinzel', serif";
-                btn.style.fontWeight = "700";
-                btn.style.fontSize = "0.85rem";
-                btn.style.borderRadius = "5px";
-                btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
-                
+               
                 intro.prepend(btn);
             }
         });
     }
-});
+);
 
 // ==========================================================
 // GELİŞMİŞ FARE HAREKET VE MOBİL TIKLAMA MOTORU
