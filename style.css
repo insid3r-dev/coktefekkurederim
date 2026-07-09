@@ -694,9 +694,9 @@ footer {
     /* MÜZİK BUTONU----------------------------------------- */
     .music-btn {
 
-    position: sticky;        /* Ekranın en üstüne kilitler */
+    position: fixed;        /* Ekranın en üstüne kilitler */
     top: 2px;              /* Tavandan tam 2px boşluk */
-    right: 2px;
+    right: 10px;
     left: auto;       /* Ana margin ayarını mobil için sıfırlıyoruz ki taşmasın dışarı */
     margin-left: 0;   /* Ana margin ayarını mobil için sıfırlıyoruz ki taşmasın dışarı */
 
