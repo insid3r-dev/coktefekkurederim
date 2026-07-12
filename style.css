@@ -127,7 +127,7 @@ h2 {
     left: 50%;              /* Ekranın tam ortasına git */
         /* İnce ayar: Başlığının genişliğinin yarısını buraya yaz */
     /* Başlığın 500px genişliğindeyse, buraya 250px + 20px (boşluk) ekle */
-    margin-left: 400px;
+    margin-left: 430px;
     z-index: 999999;/* Butonun her şeyin üstünde kalması için */
 }
 
@@ -136,20 +136,41 @@ h2 {
 
 #palette-btn{
 
-    width:42px;
-    height:42px;
+    width:44px;
+    height:44px;
 
     border-radius:50%;
-    border:none;
+
+    background:rgba(18,18,18,.6);
+
+    border:1px solid var(--gold2);
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
     cursor:pointer;
 
-    font-size:20px;
+    color:var(--gold2);
 
-    background:rgba(20,20,20,.7);
-    color:white;
+    transition:.3s;
 
-    backdrop-filter:blur(10px);
+    box-shadow:0 4px 15px rgba(0,0,0,.4);
+}
+
+#palette-btn:hover{
+
+    background:var(--gold2);
+
+    color:#121212;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 6px 20px rgba(212,175,55,.4);
+
 }
 
 .theme-menu{
@@ -565,6 +586,7 @@ footer {
     font-size: 1.05rem;
     line-height: 1.5;
     color: #e3decb;
+    color:var(--text2);
     opacity: 0.9;
 }
 
