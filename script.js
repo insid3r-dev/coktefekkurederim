@@ -64,6 +64,91 @@ if(saved){
 
 
 /* ==========================================================
+  YAN PANEL BUTONU ÜZERİNDE DÖNEN IŞIK 
+========================================================== */
+document.querySelectorAll(".frame-btn").forEach(btn=>{
+
+    let t=0;
+    let raf=null;
+
+    function loop(){
+
+        const w=btn.offsetWidth;
+        const h=btn.offsetHeight;
+
+        const r=18;
+
+        const p=t%1;
+
+        let x,y;
+
+        if(p<0.25){
+
+            const k=p/.25;
+
+            x=r+k*(w-r*2);
+
+            y=0;
+
+        }else if(p<0.5){
+
+            const k=(p-.25)/.25;
+
+            x=w;
+
+            y=r+k*(h-r*2);
+
+        }else if(p<0.75){
+
+            const k=(p-.5)/.25;
+
+            x=w-r-k*(w-r*2);
+
+            y=h;
+
+        }else{
+
+            const k=(p-.75)/.25;
+
+            x=0;
+
+            y=h-r-k*(h-r*2);
+
+        }
+
+        btn.style.setProperty("--lx",x+"px");
+        btn.style.setProperty("--ly",y+"px");
+
+        btn.style.setProperty("--rot",(Math.atan2(
+            Math.sin(t*Math.PI*2),
+            Math.cos(t*Math.PI*2)
+        )*180/Math.PI)+"deg");
+
+        t+=0.0035;
+
+        raf=requestAnimationFrame(loop);
+
+    }
+
+    btn.addEventListener("mouseenter",()=>{
+
+        cancelAnimationFrame(raf);
+
+        loop();
+
+    });
+
+    btn.addEventListener("mouseleave",()=>{
+
+        cancelAnimationFrame(raf);
+
+    });
+
+});
+
+
+
+/* ==========================================================
    PREMIUM ALTIN TOZU MOTORU v2.0
 ========================================================== */
 
