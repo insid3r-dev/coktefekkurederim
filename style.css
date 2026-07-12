@@ -976,11 +976,11 @@ footer {
     /* TEMA BUTONU----------------------------------------- */
     .theme-switcher{
 
-        position:absolute;
+        position:absolute;   /* Scroll yaptıkça kaybolur */
 
         top:6px;
-
-        right:60px;   /* Müzik butonundan biraz sola */
+        right: 60px;      /* Sağdan tam 10px boşluk */
+        left: auto;       /* Ana margin ayarını mobil için sıfırlıyoruz ki taşmasın dışarı */
 
         z-index:999999;
     }
@@ -990,7 +990,7 @@ footer {
     /* MÜZİK BUTONU----------------------------------------- */
     .music-btn {
 
-    position: fixed;        /* Ekranın en üstüne kilitler */
+    position: fixed;        /* Ekranın en üstüne kilitler, scroll yapsan da ekranın aynı yerinde sabit kalır */
     top: 6px;              /* Tavandan tam 2px boşluk */
     right: 10px;
     left: auto;       /* Ana margin ayarını mobil için sıfırlıyoruz ki taşmasın dışarı */
