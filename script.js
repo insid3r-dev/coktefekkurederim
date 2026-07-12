@@ -71,89 +71,71 @@ if(saved){
 
 document.querySelectorAll(".frame-btn").forEach(btn=>{
 
-    let t=0;
-    let raf=null;
+    let t = 0;
+    let raf = null;
 
     function loop(){
 
+        const w = btn.offsetWidth;
+        const h = btn.offsetHeight;
+
+        const r = 18;
         const offset = 2;
-// ÜST
-x = r + k * (w - r * 2);
-y = -offset;
 
-// SAĞ
-x = w + offset;
-y = r + k * (h - r * 2);
+        const p = t % 1;
 
-// ALT
-x = w - r - k * (w - r * 2);
-y = h + offset;
+        let x, y;
 
-// SOL
-x = -offset;
-y = h - r - k * (h - r * 2);
+        if(p < 0.25){
 
-        const w=btn.offsetWidth;
-        const h=btn.offsetHeight;
+            const k = p / 0.25;
 
-        const r=18;
+            x = r + k * (w - r * 2);
+            y = -offset;
 
-        const p=t%1;
+        }else if(p < 0.5){
 
-        let x,y;
+            const k = (p - 0.25) / 0.25;
 
-        if(p<0.25){
+            x = w + offset;
+            y = r + k * (h - r * 2);
 
-            const k=p/.25;
+        }else if(p < 0.75){
 
-            x=r+k*(w-r*2);
+            const k = (p - 0.5) / 0.25;
 
-            y=0;
-
-        }else if(p<0.5){
-
-            const k=(p-.25)/.25;
-
-            x=w;
-
-            y=r+k*(h-r*2);
-
-        }else if(p<0.75){
-
-            const k=(p-.5)/.25;
-
-            x=w-r-k*(w-r*2);
-
-            y=h;
+            x = w - r - k * (w - r * 2);
+            y = h + offset;
 
         }else{
 
-            const k=(p-.75)/.25;
+            const k = (p - 0.75) / 0.25;
 
-            x=0;
-
-            y=h-r-k*(h-r*2);
+            x = -offset;
+            y = h - r - k * (h - r * 2);
 
         }
 
-        btn.style.setProperty("--lx",x+"px");
-        btn.style.setProperty("--ly",y+"px");
+        btn.style.setProperty("--lx", x + "px");
+        btn.style.setProperty("--ly", y + "px");
 
-        btn.style.setProperty("--rot",(Math.atan2(
-            Math.sin(t*Math.PI*2),
-            Math.cos(t*Math.PI*2)
-        )*180/Math.PI)+"deg");
+        btn.style.setProperty(
+            "--rot",
+            (Math.atan2(
+                Math.sin(t * Math.PI * 2),
+                Math.cos(t * Math.PI * 2)
+            ) * 180 / Math.PI) + "deg"
+        );
 
-        t+=0.0035;
+        t += 0.0035;
 
-        raf=requestAnimationFrame(loop);
+        raf = requestAnimationFrame(loop);
 
     }
 
     btn.addEventListener("mouseenter",()=>{
 
         cancelAnimationFrame(raf);
-
         loop();
 
     });
