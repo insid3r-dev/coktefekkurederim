@@ -219,140 +219,40 @@ setTimeout(()=>p.remove(),900);
 
 document.querySelectorAll(".frame-btn").forEach(btn=>{
 
-    btn.addEventListener("click",()=>{
+btn.addEventListener("click",e=>{
 
-        const old=btn.querySelector(".frame-light");
-        if(old) old.remove();
+btn.classList.remove("clicked");
 
-        const light=document.createElement("div");
-        light.className="frame-light";
+void btn.offsetWidth;
 
-        for(let i=0;i<14;i++){
+btn.classList.add("clicked");
 
-            const t=document.createElement("span");
-            t.className="trail";
-            light.appendChild(t);
+const r=btn.getBoundingClientRect();
 
-        }
+for(let i=0;i<26;i++){
 
-        btn.appendChild(light);
+const p=document.createElement("div");
 
-        const w=btn.offsetWidth;
-        const h=btn.offsetHeight;
+p.className="spark";
 
-        const pad=2;
+p.style.left=(r.left+r.width/2)+"px";
+p.style.top=(r.top+r.height/2)+"px";
 
-        const perimeter=(w*2+h*2)-8;
+const a=Math.random()*Math.PI*2;
+const d=40+Math.random()*50;
 
-        let start=null;
+p.style.setProperty("--x",Math.cos(a)*d+"px");
+p.style.setProperty("--y",Math.sin(a)*d+"px");
 
-        let lastX=0;
-        let lastY=0;
+document.body.appendChild(p);
 
-        function animate(time){
+setTimeout(()=>p.remove(),900);
 
-            if(!start) start=time;
-
-            const raw=Math.min((time-start)/1300,1);
-
-            let progress;
-
-            if(raw<0.18){
-
-                progress=raw*0.01;
-
-            }else{
-
-                const x=(raw-.18)/.82;
-
-                progress=.002+.998*(1-Math.pow(1-x,6));
-
-            }
-
-            const d=progress*perimeter;
-
-            let x,y;
-
-            if(d<w){
-
-                x=pad+d;
-                y=pad;
-
-            }else if(d<w+h){
-
-                x=w-pad;
-                y=pad+(d-w);
-
-            }else if(d<w+h+w){
-
-                x=w-pad-(d-w-h);
-                y=h-pad;
-
-            }else{
-
-                x=pad;
-                y=h-pad-(d-w-h-w);
-
-            }
-
-            const angle=Math.atan2(y-lastY,x-lastX);
-
-            lastX=x;
-            lastY=y;
-
-            light.style.left=x+"px";
-            light.style.top=y+"px";
-
-            light.style.transform=
-            `translate(-50%,-50%) rotate(${angle}rad)`;
-
-            let tailLength;
-
-            if(raw<0.15){
-
-                tailLength=25;
-
-            }else if(raw<0.30){
-
-                tailLength=25+((raw-.15)/.15)*170;
-
-            }else{
-
-                tailLength=195-(raw-.30)*130;
-
-            }
-
-            light.querySelectorAll(".trail").forEach((e,i)=>{
-
-                const p=i/13;
-
-                e.style.width=(tailLength*(1-p))+"px";
-
-                e.style.opacity=(1-p)*(raw<0.2?1.2:0.75);
-
-                e.style.transform=
-                `translate(${-tailLength*p}px,-50%)`;
-
-            });
-
-            if(progress<1){
-
-                requestAnimationFrame(animate);
-
-            }else{
-
-                light.remove();
-
-            }
-
-        }
-
-        requestAnimationFrame(animate);
-
-    });
+}
 
 });
 
+});
 // ==========================================================
 
 
