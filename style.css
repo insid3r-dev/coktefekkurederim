@@ -392,77 +392,45 @@ body::before {
     width:12px;
     height:12px;
 
-    border-radius:50%;
-
     pointer-events:none;
 
     z-index:999;
 
-    background:
-        radial-gradient(circle,#fff,#fff8c8,#ffd54d 55%,transparent);
+    border-radius:50%;
+
+    background:radial-gradient(circle,#fff 0%,#fff7c5 22%,#ffd54d 55%,transparent);
 
     box-shadow:
-        0 0 12px #fff,
-        0 0 25px #ffe27a,
-        0 0 45px #d4af37;
+        0 0 10px #fff,
+        0 0 18px #ffe27a,
+        0 0 40px #d4af37;
 
 }
 
-.frame-light .tail{
+.frame-light .trail{
 
     position:absolute;
 
-    right:100%;
-
+    left:0;
     top:50%;
-
-    transform:translateY(-50%);
-
-    width:35px;
 
     height:4px;
 
-    border-radius:50px;
+    border-radius:30px;
+
+    transform-origin:right center;
 
     background:linear-gradient(
         to left,
         rgba(255,255,255,.95),
-        rgba(255,235,140,.75),
-        rgba(255,215,80,.35),
+        rgba(255,243,170,.75),
+        rgba(255,210,70,.45),
+        rgba(255,180,20,.15),
         transparent
     );
 
-    filter:blur(5px);
-
+    filter:blur(3px);
 }
-/* İç kuyruk */
-
-.frame-light::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:-85px;
-    top:50%;
-
-    width:85px;
-    height:2px;
-
-    transform:translateY(-50%);
-
-    border-radius:50px;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.95)
-    );
-
-    filter:blur(1px);
-
-}
-
 /* TIKLANINCA IŞIK DÖNSÜN */
 
 .frame-btn.clicked::before{
