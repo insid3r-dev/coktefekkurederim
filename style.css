@@ -891,13 +891,13 @@ body::after{
 .dock {
 
     display: grid;
-    grid-template-columns: repeat(3, 200px);
+    grid-template-columns: repeat(3, 230px);
 
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 35px 20px;
-    max-width: 700px;
+    max-width: 690px;
     margin: 40px auto 0;
     padding: 40px 10px;
     overflow: visible !important;
@@ -983,8 +983,8 @@ body::after{
         display: block !important;
         top: 78% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
         left: 50% !important;
-        width: 300px !important;
-        max-height: 290px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
+        width: 285px !important;
+        max-height: 333px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
         transform: translateX(-50%) scale(0.8) !important; 
         
         background: rgba(18, 13, 4, 0.99); 
