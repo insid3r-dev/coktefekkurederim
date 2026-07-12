@@ -251,22 +251,23 @@ document.querySelectorAll(".frame-btn").forEach(btn=>{
 
             if(!start) start=t;
 
-            const raw=Math.min((t-start)/1200,1);
+            const raw=Math.min((t-start)/1100,1);
 
-                let progress;
+let progress;
 
-                if(raw<0.12){
+if(raw<0.18){
 
-                    progress=raw*0.03;
+    // Motor enerji topluyor
+    progress = raw * 0.005;
 
-                }else{
+}else{
 
-                    const x=(raw-0.12)/0.88;
+    const x = (raw - 0.18) / 0.82;
 
-                    progress=0.003+0.997*(1-Math.pow(1-x,4.5));
+    // Ani warp ivmesi
+    progress = 0.001 + 0.999 * Math.pow(x,0.12);
 
-                }
-
+}
             const d=progress*total;
 
             let x,y;
@@ -297,13 +298,52 @@ document.querySelectorAll(".frame-btn").forEach(btn=>{
             light.style.top=y+"px";
             light.style.opacity=1;
 
+            let glow;
+
+if(raw<0.15){
+
+    glow=6;
+
+}else if(raw<0.30){
+
+    glow=6-((raw-0.15)/0.15)*2.8;
+
+}else{
+
+    glow=3;
+
+}
+
+light.style.filter=
+`brightness(${glow}) drop-shadow(0 0 ${glow*7}px #fff7a0)`;
+
             const angle=Math.atan2(y-lastY,x-lastX);
 
-            light.style.transform=
-            `translate(-50%,-50%) rotate(${angle}rad)`;
+let stretch;
 
-            lastX=x;
-            lastY=y;
+if(raw<0.15){
+
+    stretch=.5;
+
+}else if(raw<0.28){
+
+    stretch=.5+((raw-.15)/.13)*9;
+
+}else if(raw<0.45){
+
+    stretch=9-((raw-.28)/.17)*5;
+
+}else{
+
+    stretch=4-(raw-.45)*2.5;
+
+}
+
+light.style.transform=
+`translate(-50%,-50%) rotate(${angle}rad) scaleX(${stretch})`;
+
+lastX=x;
+lastY=y;
 
             if(progress<1){
 
