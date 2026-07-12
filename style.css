@@ -421,11 +421,12 @@ body::before {
 
     position:absolute;
 
-    left:-70px;
+    left:-140px;
     top:50%;
 
-    width:70px;
+    width:140px;
     height:4px;
+    opacity:.95;
 
     transform:translateY(-50%);
 
@@ -441,7 +442,7 @@ body::before {
         rgba(255,255,255,.95)
     );
 
-    filter:blur(3px);
+    filter:blur(6px);
 
     transform-origin:right center;
 
@@ -455,10 +456,10 @@ body::before {
 
     position:absolute;
 
-    left:-42px;
+    left:-85px;
     top:50%;
 
-    width:42px;
+    width:85px;
     height:2px;
 
     transform:translateY(-50%);
