@@ -280,6 +280,7 @@ body::before {
 .frame-btn{
 
     position:relative;
+    overflow:visible;
 
     width:54px;
     height:54px;
@@ -447,6 +448,73 @@ transform:rotate(360deg);
 
 }
 
+
+
+/* Çerçevenin etrafında dolaşacak ışık */
+.frame-btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(circle,
+        #ffffff 0%,
+        #fff9d0 18%,
+        #ffd95a 45%,
+        rgba(255,215,90,.45) 70%,
+        transparent 100%);
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 18px #ffe27a,
+        0 0 35px #d4af37;
+
+    opacity:0;
+
+    offset-path:path("M9 9 H45 Q54 9 54 18 V36 Q54 45 45 45 H9 Q0 45 0 36 V18 Q0 9 9 9 Z");
+
+    offset-distance:0%;
+
+    transform:translate(-50%,-50%);
+}
+
+.frame-btn.clicked::after{
+
+    opacity:1;
+
+    animation:borderRun .9s linear forwards;
+
+}
+
+@keyframes borderRun{
+
+0%{
+
+offset-distance:0%;
+opacity:1;
+
+}
+
+95%{
+
+opacity:1;
+
+}
+
+100%{
+
+offset-distance:100%;
+opacity:0;
+
+}
+
+}
 
 /* TIKLANINCA ALTIN TOZLARI YAN PANEL */
 
