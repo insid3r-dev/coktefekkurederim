@@ -18,8 +18,8 @@
 
 body[data-theme="light"]{
 
---bg1:#fcecc0;
---bg2:#b59848;
+--bg1:#fcecc0;   /* =====Sol üstten başlayan renk====================================== */
+--bg2:#997920;   /* =====Sağ altta biten renk====================================== */
 
 --gold:#b98b00;
 --gold2:#8b6800;
@@ -97,21 +97,24 @@ header {
     z-index: 5;
 }
 
+/* =====BAŞLIK ÇOK TEFEKKÜR EDERİM====================================== */
 h1 {
     font-family: "Cinzel Decorative", serif;
     font-size: clamp(2.2rem, 5.5vw, 4.2rem);
     margin: 0;
     color: var(--gold2);
-    color:var(--heading);
+    color: var(--heading);
     text-shadow: 0 0 25px rgba(212,175,55,0.25);
     letter-spacing: 2px;
 }
 
+/* =====BAŞLIK ALTINDAKİ ASLAN ÇAKMAK====================================== */
 h2 {
     font-family: "Cormorant Garamond", serif;
     font-size: 1.8rem;
     font-weight: 400;
     color: #c9b080;
+    color: var(--heading);
     margin: 10px 0 0;
     letter-spacing: 4px;
 }
