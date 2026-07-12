@@ -61,7 +61,9 @@ if(saved){
 
 /* ==========================================================
 ========================================================== */
-
+/* ==========================================================
+  YAN PANELLLLL
+========================================================== */
 
 /* ==========================================================
   YAN PANEL BUTONU ÜZERİNDE DÖNEN IŞIK 
@@ -147,6 +149,33 @@ document.querySelectorAll(".frame-btn").forEach(btn=>{
     });
 
 });
+
+/* ===============Butona  basınca diğer page-home ögelerini sakla======================= */
+function showPage(id){
+
+    document.querySelectorAll("section").forEach(page=>{
+
+        page.hidden=true;
+
+    });
+
+    document.getElementById(id).hidden=false;
+
+}
+
+/* ===============yan panel butonları======================= */
+const buttons=document.querySelectorAll(".frame-btn");
+
+buttons[0].onclick=()=>showPage("home-page");
+
+buttons[1].onclick=()=>showPage("about-page");
+
+buttons[2].onclick=()=>showPage("books-page");
+
+buttons[3].onclick=()=>showPage("contact-page");
+
+
+
 
 
 
