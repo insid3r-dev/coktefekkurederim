@@ -124,6 +124,28 @@ body::before {
 /* ==========================================================
       SOL MİSTİK MENÜ
 ==========================================================*/
+.frame-top{
+
+    width:140px;
+    height:260px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:none;
+    border:none;
+    backdrop-filter:none;
+
+    margin-bottom:20px;
+}
+
+.frame-top-svg{
+
+    width:100%;
+    height:100%;
+    overflow:visible;
+}
 
 .side-frame{
 
