@@ -29,7 +29,7 @@ body[data-theme="light"]{
 --glass:rgba(255,255,255,.7);
 
 --text:#222;
---text2:#444;
+--text2:#111;
 --heading:#111;
 --subheading:#555;
 }
