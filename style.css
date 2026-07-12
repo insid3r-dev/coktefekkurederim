@@ -494,6 +494,7 @@ h1 span {
     letter-spacing: 1px;
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     padding-bottom: 6px;
+    text-align:center;
 }
 
 /* Açıklama penceresi metni alanı */
@@ -983,7 +984,7 @@ body::after{
         display: block !important;
         top: 78% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
         left: 50% !important;
-        width: 285px !important;
+        width: 310px !important;
         max-height: 333px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
         transform: translateX(-50%) scale(0.8) !important; 
         
