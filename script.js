@@ -66,12 +66,32 @@ if(saved){
 /* ==========================================================
   YAN PANEL BUTONU ÜZERİNDE DÖNEN IŞIK 
 ========================================================== */
+
+
+
 document.querySelectorAll(".frame-btn").forEach(btn=>{
 
     let t=0;
     let raf=null;
 
     function loop(){
+
+        const offset = 2;
+// ÜST
+x = r + k * (w - r * 2);
+y = -offset;
+
+// SAĞ
+x = w + offset;
+y = r + k * (h - r * 2);
+
+// ALT
+x = w - r - k * (w - r * 2);
+y = h + offset;
+
+// SOL
+x = -offset;
+y = h - r - k * (h - r * 2);
 
         const w=btn.offsetWidth;
         const h=btn.offsetHeight;
