@@ -315,6 +315,29 @@ if(raw<0.15){
 }
 
 light.style.filter=
+    const tail = light.querySelector(".tail");
+
+if(tail){
+
+    let len;
+
+    if(raw<0.15){
+
+        len=35;
+
+    }else if(raw<0.35){
+
+        len=35+(raw-0.15)/0.20*140;
+
+    }else{
+
+        len=175-(raw-0.35)/0.65*80;
+
+    }
+
+    tail.style.width=len+"px";
+
+}
 `brightness(${glow}) drop-shadow(0 0 ${glow*7}px #fff7a0)`;
 
             const angle=Math.atan2(y-lastY,x-lastX);
@@ -340,7 +363,7 @@ if(raw<0.15){
 }
 
 light.style.transform=
-`translate(-50%,-50%) rotate(${angle}rad) scaleX(${stretch})`;
+`translate(-50%,-50%) rotate(${angle}rad)`;
 
 lastX=x;
 lastY=y;
