@@ -891,13 +891,13 @@ body::after{
 .dock {
 
     display: grid;
-    grid-template-columns: repeat(3, 230px);
+    grid-template-columns: repeat(3, 160px);
 
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 35px 20px;
-    max-width: 690px;
+    max-width: 670px;
     margin: 40px auto 0;
     padding: 40px 10px;
     overflow: visible !important;
@@ -906,8 +906,8 @@ body::after{
 }
 
 .book {
-    flex: 0 0 135px;
-    width: 135px !important;
+    flex: 0 0 160px;
+    width: 160px !important;
     height: auto;
     position: relative;
     display: block;
