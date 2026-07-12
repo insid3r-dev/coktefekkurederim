@@ -174,9 +174,33 @@ buttons[2].onclick=()=>showPage("books-page");
 
 buttons[3].onclick=()=>showPage("contact-page");
 
+/* ===============yan panel butonları======================= */
 
+const pages = document.querySelectorAll(".page");
+const menuButtons = document.querySelectorAll(".frame-btn");
 
+menuButtons.forEach(button=>{
 
+    button.addEventListener("click",()=>{
+
+        menuButtons.forEach(btn=>btn.classList.remove("active"));
+        button.classList.add("active");
+
+        pages.forEach(page=>page.classList.remove("active-page"));
+
+        const target=document.getElementById("page-"+button.dataset.page);
+
+        if(target){
+            target.classList.add("active-page");
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+        }
+
+    });
+
+});
 
 
 /* ==========================================================
