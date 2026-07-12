@@ -527,6 +527,34 @@ scale(1.8);
 }
 
 
+/* yan panel butonuna basınca diğerlerini gizlemesi*/
+.page{
+    display:none;
+    animation:fadePage .35s ease;
+}
+
+.page.active-page{
+    display:block;
+}
+
+@keyframes fadePage{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+
+
+
 /* ===========YAN PANEL SONU=================================================== */
 /* ============================================================== */
 /* ============================================================== */
