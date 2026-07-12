@@ -359,7 +359,7 @@ h1 span {
 ========================================================== */
 .dock {
 
-    display: flex;
+    display: flex;   /* grid dersek sırayla sola yaslayarak koyar kapakları, ama flex dersek alttaki sırayı daima ortalar çünkü justify align contet center dedik  */
     grid-template-columns: repeat(4, 200px);
 
     flex-wrap: wrap;
