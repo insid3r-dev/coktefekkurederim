@@ -1038,21 +1038,14 @@ footer {
 }
     /* MÜZİK BUTONU SONU----------------------------------------- */
 
-
-    
-    /* ALTTAKİ ÖGELERİ SİTEYE ORTALIYORUZ----------------------------------------- */
-header{
-    width:auto;
-    max-width:340px;
-    margin:0 auto;
-}
-    
+    /* Alttaki elemanları mobil siteye ortalamak için info sectionun genişliğine getiriyoruz----------------------------------------- */
+header,
 .subtitle,
 .dock,
 .social-section,
 .info-section{
 
-    width:340px;
+    width:800px;
     max-width:calc(100% - 20px);
 
     margin-left:auto;
