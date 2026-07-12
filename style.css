@@ -980,8 +980,8 @@ footer {
 
         position:absolute;   /* Scroll yaptıkça kaybolur */
 
-        top:6px;
-        right: 60px;      /* Sağdan tam 10px boşluk */
+        top:36px;
+        right: 26px;      /* Sağdan tam 10px boşluk */
         left: auto;       /* Ana margin ayarını mobil için sıfırlıyoruz ki taşmasın dışarı */
 
         z-index:999999;
@@ -1064,6 +1064,16 @@ header{
     margin-left:auto;
     margin-right:auto;
 }
+.share-grid-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 30px; 
+    position: relative;
+    z-index: 5;
+   }    
 
 }
 
