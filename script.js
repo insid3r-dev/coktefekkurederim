@@ -214,6 +214,98 @@ setTimeout(()=>p.remove(),900);
 
 
 // ==========================================================
+// YAN PANEL TIKLAMA İLE IŞIĞIN YAN PANEL ÇERÇEVESİNDE DOLAŞMASI
+// ==========================================================
+
+document.querySelectorAll(".frame-btn").forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        const old=btn.querySelector(".frame-light");
+
+        if(old) old.remove();
+
+        const light=document.createElement("div");
+
+        light.className="frame-light";
+
+        btn.appendChild(light);
+
+        const w=btn.offsetWidth;
+        const h=btn.offsetHeight;
+
+        const p=2;
+
+        const top=w;
+        const right=h;
+        const bottom=w;
+        const left=h;
+
+        const total=top+right+bottom+left;
+
+        let start=null;
+
+        function animate(t){
+
+            if(!start) start=t;
+
+            const progress=Math.min((t-start)/900,1);
+
+            const d=progress*total;
+
+            let x,y;
+
+            if(d<top){
+
+                x=p+d;
+                y=p;
+
+            }else if(d<top+right){
+
+                x=w-p;
+                y=p+(d-top);
+
+            }else if(d<top+right+bottom){
+
+                x=w-p-(d-top-right);
+                y=h-p;
+
+            }else{
+
+                x=p;
+                y=h-p-(d-top-right-bottom);
+
+            }
+
+            light.style.left=x+"px";
+            light.style.top=y+"px";
+            light.style.opacity=1;
+
+            if(progress<1){
+
+                requestAnimationFrame(animate);
+
+            }else{
+
+                light.remove();
+
+            }
+
+        }
+
+        requestAnimationFrame(animate);
+
+    });
+
+});
+
+// ==========================================================
+
+
+
+
+
+// ==========================================================
 // GELİŞMİŞ FARE HAREKET VE MOBİL TIKLAMA MOTORU
 // ==========================================================
 function handleMove(e) {
