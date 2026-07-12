@@ -404,68 +404,50 @@ body::before {
 
 /* YAN PANEL çerçevesi üzerinde elips ışık */
 
+.frame-btn{
+
+    position:relative;
+    overflow:visible;
+
+}
+
 .frame-btn::after{
 
     content:"";
 
     position:absolute;
 
-    inset:-2px;
+    width:18px;
+    height:8px;
 
-    border-radius:18px;
+    border-radius:999px;
+
+    left:0;
+    top:0;
 
     opacity:0;
 
-    transition:opacity .35s;
+    pointer-events:none;
 
     background:
-    conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 300deg,
-        rgba(255,248,185,.95) 325deg,
-        rgba(255,215,90,.95) 340deg,
-        rgba(255,248,185,.95) 355deg,
-        transparent 360deg
+    radial-gradient(
+        ellipse at center,
+        rgba(255,255,220,1) 0%,
+        rgba(255,225,120,.95) 35%,
+        rgba(212,175,55,.85) 65%,
+        transparent 100%
     );
 
-    animation:borderOrbit 3s linear infinite;
-
-    mask:
-        radial-gradient(
-            ellipse calc(100% - 4px) calc(100% - 12px),
-            transparent 95%,
-            #000 97%
-        );
-
-    -webkit-mask:
-        radial-gradient(
-            ellipse calc(100% - 4px) calc(100% - 12px),
-            transparent 95%,
-            #000 97%
-        );
+    filter:
+        blur(.3px)
+        drop-shadow(0 0 5px rgba(255,230,120,.9))
+        drop-shadow(0 0 14px rgba(255,220,80,.6));
 
 }
 
 .frame-btn:hover::after{
 
     opacity:1;
-
-}
-
-@keyframes borderOrbit{
-
-    from{
-
-        transform:rotate(0deg);
-
-    }
-
-    to{
-
-        transform:rotate(360deg);
-
-    }
 
 }
 
