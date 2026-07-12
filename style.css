@@ -1024,10 +1024,38 @@ footer {
     /* MÜZİK BUTONU SONU----------------------------------------- */
 
     /* Alttaki elemanları mobil siteye ortalamak için info sectionun genişliğine getiriyoruz----------------------------------------- */
-header,
-.subtitle,
-.dock,
-.social-section,
+header{
+
+    width:700px;
+    max-width:calc(100% - 20px);
+
+    margin-left:auto;
+    margin-right:auto;
+}
+.subtitle{
+
+    width:700px;
+    max-width:calc(100% - 20px);
+
+    margin-left:auto;
+    margin-right:auto;
+}
+.dock{
+
+    width:700px;
+    max-width:calc(100% - 20px);
+
+    margin-left:auto;
+    margin-right:auto;
+}
+.social-section{
+
+    width:700px;
+    max-width:calc(100% - 20px);
+
+    margin-left:auto;
+    margin-right:auto;
+}
 .info-section{
 
     width:700px;
