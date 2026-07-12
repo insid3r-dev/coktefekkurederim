@@ -389,65 +389,52 @@ body::before {
 
     position:absolute;
 
-    width:10px;
-    height:10px;
-
-    pointer-events:none;
+    width:12px;
+    height:12px;
 
     border-radius:50%;
+
+    pointer-events:none;
 
     z-index:999;
 
     background:
-        radial-gradient(circle,
-            #ffffff 0%,
-            #fff7d0 18%,
-            #ffd54d 42%,
-            rgba(255,215,80,.55) 65%,
-            transparent 100%);
+        radial-gradient(circle,#fff,#fff8c8,#ffd54d 55%,transparent);
 
     box-shadow:
-        0 0 10px #fff,
-        0 0 18px #ffe27a,
-        0 0 35px #d4af37;
+        0 0 12px #fff,
+        0 0 25px #ffe27a,
+        0 0 45px #d4af37;
 
 }
 
-/* Kuyruk */
-
-.frame-light::before{
-
-    content:"";
+.frame-light .tail{
 
     position:absolute;
 
-    left:-140px;
+    right:100%;
+
     top:50%;
 
-    width:140px;
-    height:4px;
-    opacity:.95;
-
     transform:translateY(-50%);
+
+    width:35px;
+
+    height:4px;
 
     border-radius:50px;
 
     background:linear-gradient(
-        90deg,
-        rgba(255,255,255,0),
-        rgba(255,225,120,.08),
-        rgba(255,225,120,.18),
-        rgba(255,225,120,.35),
-        rgba(255,240,180,.7),
-        rgba(255,255,255,.95)
+        to left,
+        rgba(255,255,255,.95),
+        rgba(255,235,140,.75),
+        rgba(255,215,80,.35),
+        transparent
     );
 
-    filter:blur(6px);
-
-    transform-origin:right center;
+    filter:blur(5px);
 
 }
-
 /* İç kuyruk */
 
 .frame-light::after{
