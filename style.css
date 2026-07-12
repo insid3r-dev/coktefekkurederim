@@ -404,26 +404,24 @@ body::before {
 
 /* YAN PANEL çerçevesi üzerinde elips ışık */
 
-.frame-btn{
-
-    position:relative;
-    overflow:visible;
-
-}
-
 .frame-btn::after{
 
     content:"";
 
     position:absolute;
 
+    left:var(--lx);
+    top:var(--ly);
+
     width:18px;
     height:8px;
 
+    margin-left:-9px;
+    margin-top:-4px;
+
     border-radius:999px;
 
-    left:0;
-    top:0;
+    transform:rotate(var(--rot));
 
     opacity:0;
 
@@ -431,17 +429,17 @@ body::before {
 
     background:
     radial-gradient(
-        ellipse at center,
-        rgba(255,255,220,1) 0%,
-        rgba(255,225,120,.95) 35%,
-        rgba(212,175,55,.85) 65%,
+        ellipse,
+        rgba(255,255,255,.95) 0%,
+        rgba(255,225,140,.95) 40%,
+        rgba(212,175,55,.8) 70%,
         transparent 100%
     );
 
     filter:
-        blur(.3px)
-        drop-shadow(0 0 5px rgba(255,230,120,.9))
-        drop-shadow(0 0 14px rgba(255,220,80,.6));
+        blur(.25px)
+        drop-shadow(0 0 6px rgba(255,225,120,.9))
+        drop-shadow(0 0 14px rgba(255,215,80,.7));
 
 }
 
