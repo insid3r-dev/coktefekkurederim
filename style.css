@@ -404,68 +404,159 @@ body::before {
 
 /* Altın ışığın çerçevede dolaşması */
 
-.frame-btn::before{
+.frame-btn{
+    position:relative;
+    overflow:visible;
+}
+
+.frame-light{
+
+    position:absolute;
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:radial-gradient(circle,#fff 0%,#fff7b5 30%,#ffd54d 60%,transparent 100%);
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 16px #ffe27a,
+        0 0 28px #d4af37;
+
+    opacity:0;
+
+    z-index:999;
+}
+/* Kuyruk */
+
+.frame-light::before{
 
     content:"";
 
     position:absolute;
 
-    inset:-2px;
+    left:-70px;
+    top:50%;
 
-    border-radius:18px;
+    width:70px;
+    height:4px;
 
-    padding:2px;
+    transform:translateY(-50%);
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,225,120,.08),
+        rgba(255,225,120,.18),
+        rgba(255,225,120,.35),
+        rgba(255,240,180,.7),
+        rgba(255,255,255,.95)
+    );
+
+    filter:blur(3px);
+
+    transform-origin:right center;
+
+}
+
+/* İç kuyruk */
+
+.frame-light::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-42px;
+    top:50%;
+
+    width:42px;
+    height:2px;
+
+    transform:translateY(-50%);
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.95)
+    );
+
+    filter:blur(1px);
+
+}
+/* Çerçevenin etrafında dolaşacak ışık */
+.frame-btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
 
     background:
-    conic-gradient(
-    from 0deg,
-    transparent,
-    transparent,
-    transparent,
-    #ffe27a,
-    #fff8d2,
-    #ffd34c,
-    transparent,
-    transparent);
+        radial-gradient(circle,
+        #ffffff 0%,
+        #fff9d0 18%,
+        #ffd95a 45%,
+        rgba(255,215,90,.45) 70%,
+        transparent 100%);
 
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-
-    -webkit-mask-composite:xor;
-
-    mask-composite:exclude;
+    box-shadow:
+        0 0 8px #fff,
+        0 0 18px #ffe27a,
+        0 0 35px #d4af37;
 
     opacity:0;
 
-}
-/* TIKLANINCA IŞIK DÖNSÜN */
+    offset-path:path("M9 9 H45 Q54 9 54 18 V36 Q54 45 45 45 H9 Q0 45 0 36 V18 Q0 9 9 9 Z");
 
-.frame-btn.clicked::before{
+    offset-distance:0%;
+
+    transform:translate(-50%,-50%);
+}
+
+.frame-btn.clicked::after{
 
     opacity:1;
 
-    animation:goldOrbit .9s linear;
+    animation:borderRun .9s linear forwards;
 
 }
 
-@keyframes goldOrbit{
+@keyframes borderRun{
 
-from{
+0%{
 
-transform:rotate(0deg);
-
-}
-
-to{
-
-transform:rotate(360deg);
+offset-distance:0%;
+opacity:1;
 
 }
 
+95%{
+
+opacity:1;
+
 }
 
+100%{
 
+offset-distance:100%;
+opacity:0;
+
+}
+
+}
 
 
 
