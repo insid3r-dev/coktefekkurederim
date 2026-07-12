@@ -129,10 +129,54 @@
 <body>
 
   <!-- YAN PANEL -->
-  <div class="side-frame">
+<div class="side-frame">
 
     <div class="frame-top">
-        <div class="frame-star">✦</div>
+
+        <svg class="frame-top-svg" viewBox="0 0 140 260" xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+
+                <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#fff7c5"/>
+                    <stop offset="45%" stop-color="#f4df8a"/>
+                    <stop offset="70%" stop-color="#d4af37"/>
+                    <stop offset="100%" stop-color="#8c6713"/>
+                </linearGradient>
+
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+
+            </defs>
+
+            <path
+            d="
+            M70 8
+            C72 18 80 24 98 34
+            C118 46 126 68 122 88
+            C119 108 108 124 92 132
+            C84 136 79 142 76 154
+            L76 242
+            L64 242
+            L64 154
+            C61 142 56 136 48 132
+            C32 124 21 108 18 88
+            C14 68 22 46 42 34
+            C60 24 68 18 70 8
+            "
+            fill="rgba(255,255,255,.03)"
+            stroke="url(#gold)"
+            stroke-width="2.2"
+            filter="url(#glow)"
+            />
+
+        </svg>
+
     </div>
 
     <nav class="frame-menu">
