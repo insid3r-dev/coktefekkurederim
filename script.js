@@ -1,4 +1,4 @@
-// ==========================================================
+    // ==========================================================
 // SEÇİCİLER VE AYARLAR
 // ==========================================================
 const books = document.querySelectorAll('.book');
@@ -244,6 +244,8 @@ document.querySelectorAll(".frame-btn").forEach(btn=>{
         const total=top+right+bottom+left;
 
         let start=null;
+            let lastX=0;
+            let lastY=0;
 
         function animate(t){
 
@@ -280,6 +282,14 @@ document.querySelectorAll(".frame-btn").forEach(btn=>{
             light.style.left=x+"px";
             light.style.top=y+"px";
             light.style.opacity=1;
+
+            const angle=Math.atan2(y-lastY,x-lastX);
+
+            light.style.transform=
+            `translate(-50%,-50%) rotate(${angle}rad)`;
+
+            lastX=x;
+            lastY=y;
 
             if(progress<1){
 
