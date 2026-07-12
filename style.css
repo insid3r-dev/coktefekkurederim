@@ -7,6 +7,48 @@
     --glass: rgba(255, 255, 255, .04);
 }
 
+/* ==========================================================
+   TEMA DEĞİŞTİRİCİNİN RENKLERİ
+========================================================== */
+
+body[data-theme="light"]{
+
+--bg1:#faf7ef;
+--bg2:#ece5d8;
+
+--gold:#b98b00;
+--gold2:#8b6800;
+
+--text:#222;
+
+--glass:rgba(255,255,255,.7);
+
+}
+
+body[data-theme="blue"]{
+
+--bg1:#07111f;
+--bg2:#162d52;
+
+--gold:#d4af37;
+--gold2:#ffe38b;
+
+--text:#eef5ff;
+
+--glass:rgba(255,255,255,.05);
+
+}
+
+/* ==========================================================
+========================================================== */
+
+
+
+
+
+
+
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -63,6 +105,96 @@ h2 {
     margin: 10px 0 0;
     letter-spacing: 4px;
 }
+
+
+/* ==========================================================
+   TEMA DEĞİŞTİRİCİ
+========================================================== */
+
+.theme-switcher{
+    position: fixed;        /* Ekranın en üstüne kilitler */
+    top: 5px;              /* Tavandan tam 20px boşluk */
+    left: 50%;              /* Ekranın tam ortasına git */
+        /* İnce ayar: Başlığının genişliğinin yarısını buraya yaz */
+    /* Başlığın 500px genişliğindeyse, buraya 250px + 20px (boşluk) ekle */
+    margin-left: 400px;
+    z-index: 999999;/* Butonun her şeyin üstünde kalması için */
+}
+
+
+
+
+#palette-btn{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+    border:none;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    background:rgba(20,20,20,.7);
+    color:white;
+
+    backdrop-filter:blur(10px);
+}
+
+.theme-menu{
+
+    margin-top:10px;
+
+    display:none;
+
+    background:#222;
+
+    padding:12px;
+
+    border-radius:10px;
+
+}
+
+.theme-menu.show{
+    display:flex;
+    gap:10px;
+}
+
+.theme-color{
+
+    width:26px;
+    height:26px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    border:2px solid white;
+
+}
+
+.gold{
+    background:#d4af37;
+}
+
+.ivory{
+    background:#f3eee0;
+}
+
+.blue{
+    background:#224488;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* ==========================================================
    SOM ALTIN IŞILDAYAN VERSİYON KUTUSU (v.1.8)
