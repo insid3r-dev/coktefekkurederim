@@ -163,6 +163,55 @@ btn.innerText = buttonTexts[lang] || "📖 Read / Download";
         });
     }
 );
+// ==========================================================
+
+// ==========================================================
+
+
+
+// ==========================================================
+// YAN PANEL TIKLAMA İŞLEMLERİ
+// ==========================================================
+
+document.querySelectorAll(".frame-btn").forEach(btn=>{
+
+btn.addEventListener("click",e=>{
+
+btn.classList.remove("clicked");
+
+void btn.offsetWidth;
+
+btn.classList.add("clicked");
+
+const r=btn.getBoundingClientRect();
+
+for(let i=0;i<26;i++){
+
+const p=document.createElement("div");
+
+p.className="spark";
+
+p.style.left=(r.left+r.width/2)+"px";
+p.style.top=(r.top+r.height/2)+"px";
+
+const a=Math.random()*Math.PI*2;
+const d=40+Math.random()*50;
+
+p.style.setProperty("--x",Math.cos(a)*d+"px");
+p.style.setProperty("--y",Math.sin(a)*d+"px");
+
+document.body.appendChild(p);
+
+setTimeout(()=>p.remove(),900);
+
+}
+
+});
+
+});
+
+// ==========================================================
+
 
 // ==========================================================
 // GELİŞMİŞ FARE HAREKET VE MOBİL TIKLAMA MOTORU
