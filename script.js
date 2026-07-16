@@ -260,63 +260,86 @@ btn.innerText = buttonTexts[lang] || "📖 Read / Download";
 // YAN PANEL TIKLAMA İŞLEMLERİ
 // ==========================================================
 
-document.querySelectorAll(".frame-btn").forEach(btn=>{
+const pages = {
+    0: "home-page",
+    1: "author-page"
+};
 
-btn.addEventListener("click",e=>{
+document.querySelectorAll(".frame-btn").forEach((btn, index) => {
 
-btn.classList.remove("clicked");
+    btn.addEventListener("click", () => {
 
-void btn.offsetWidth;
+        // ==========================
+        // AKTİF BUTON
+        // ==========================
 
-btn.classList.add("clicked");
+        document.querySelectorAll(".frame-btn").forEach(b=>{
+            b.classList.remove("active");
+        });
 
-const r=btn.getBoundingClientRect();
+        btn.classList.add("active");
 
-for(let i=0;i<26;i++){
 
-const p=document.createElement("div");
+        // ==========================
+        // TIKLAMA EFEKTİ
+        // ==========================
 
-p.className="spark";
+        btn.classList.remove("clicked");
+        void btn.offsetWidth;
+        btn.classList.add("clicked");
 
-p.style.left=(r.left+r.width/2)+"px";
-p.style.top=(r.top+r.height/2)+"px";
+        const r = btn.getBoundingClientRect();
 
-const a=Math.random()*Math.PI*2;
-const d=40+Math.random()*50;
+        for(let i=0;i<26;i++){
 
-p.style.setProperty("--x",Math.cos(a)*d+"px");
-p.style.setProperty("--y",Math.sin(a)*d+"px");
+            const p=document.createElement("div");
 
-document.body.appendChild(p);
+            p.className="spark";
 
-setTimeout(()=>p.remove(),900);
+            p.style.left=(r.left+r.width/2)+"px";
+            p.style.top=(r.top+r.height/2)+"px";
 
-}
+            const a=Math.random()*Math.PI*2;
+            const d=40+Math.random()*50;
 
-});
+            p.style.setProperty("--x",Math.cos(a)*d+"px");
+            p.style.setProperty("--y",Math.sin(a)*d+"px");
 
-});
+            document.body.appendChild(p);
 
-document.querySelectorAll('.frame-btn').forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-        const contentArea = document.getElementById('content-area');
-        
-        // Eğer Ana Sayfa (ilk buton) ise sayfayı yenile veya orijinal içeriği geri yükle
-        if (index === 0) {
-            location.reload(); 
-            return;
+            setTimeout(()=>p.remove(),900);
+
         }
 
-        // Diğer butonlar için orta kısmı değiştir
-        contentArea.innerHTML = `
-            <div class="gold-frame">
-                <h3 style="color: #d4af37; text-align: center;">Yakında Eklenecek Bölüm</h3>
-                <p style="color: #f8f5ea; text-align: center;">Buraya daha sonra içerik eklenecektir.</p>
-            </div>
-        `;
-    });
-});
 
+        // ==========================
+        // TÜM SAYFALARI GİZLE
+        // ==========================
+
+        document.querySelectorAll("#content-area > div").forEach(page=>{
+            page.style.display="none";
+        });
+
+
+        // ==========================
+        // SAYFA GÖSTER
+        // ==========================
+
+        if(pages[index]){
+
+            document.getElementById(pages[index]).style.display="block";
+
+        }else{
+
+            document.getElementById("home-page").style.display="block";
+
+            alert("Bu bölüm yakında eklenecek.");
+
+        }
+
+    });
+
+});
 // ==========================================================
 
 
