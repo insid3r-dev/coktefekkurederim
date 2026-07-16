@@ -323,6 +323,58 @@ body::before {
 
 }
 
+.frame-btn .icon svg{
+width:24px;
+height:24px;
+overflow:visible;
+
+fill:none;
+stroke:url(#goldGradient);
+stroke:#f4df8a;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round;
+
+    filter:
+drop-shadow(0 0 2px rgba(255,220,120,.4))
+drop-shadow(0 0 6px rgba(212,175,55,.45));
+
+animation:iconGlow 3s ease-in-out infinite;
+transition:.35s;
+}
+
+.frame-btn:hover .icon svg{
+transform:scale(1.12);
+filter:
+drop-shadow(0 0 5px rgba(255,235,170,.8))
+drop-shadow(0 0 16px rgba(212,175,55,.95));
+}
+
+.frame-btn.active .icon svg{
+filter:
+drop-shadow(0 0 8px rgba(255,240,180,.95))
+drop-shadow(0 0 20px rgba(212,175,55,1));
+}
+
+@keyframes iconGlow{
+
+0%,100%{
+opacity:.92;
+filter:
+drop-shadow(0 0 2px rgba(255,220,120,.35))
+drop-shadow(0 0 6px rgba(212,175,55,.35));
+}
+
+50%{
+opacity:1;
+filter:
+drop-shadow(0 0 7px rgba(255,240,170,.9))
+drop-shadow(0 0 18px rgba(212,175,55,.9));
+}
+
+}
+
+
 .frame-btn .label{
 
     white-space:nowrap;
