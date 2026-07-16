@@ -25,52 +25,6 @@ if (musicBtn && bgMusic) {
 }
 
 /* ==========================================================
-   SİTE DİL DEĞİŞTİRİCİ BUTONU
-========================================================== */
-
-const languageBtn=document.getElementById("language-btn");
-const languageMenu=document.getElementById("language-menu");
-
-languageBtn.addEventListener("click",()=>{
-
-languageMenu.classList.toggle("open");
-
-});
-
-document.addEventListener("click",e=>{
-
-if(!e.target.closest(".language-switcher")){
-
-languageMenu.classList.remove("open");
-
-}
-
-});
-
-document.querySelectorAll(".language-item").forEach(item => {
-
-    item.addEventListener("click", () => {
-
-        const lang = item.dataset.lang;
-
-        const pages = {
-            tr:"index.html",
-            en:"index-eng.html",
-            es:"index-es.html",
-            ru:"index-ru.html",
-            de:"index-de.html",
-            pt:"index-pt.html",
-            fr:"index-fr.html"
-        };
-
-        window.location.href = pages[lang];
-
-    });
-
-});
-
-
-/* ==========================================================
    TEMA SEÇİCİ BUTONU
 ========================================================== */
 
