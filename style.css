@@ -1252,7 +1252,7 @@ footer {
 YAN TUŞLARA BASINCA SİTE GÖVDESİNİN ORTADAKİ ÇERÇEVESİ
 ========================================================== */
 .gold-frame {
-    width: 80%;
+    width: 65%;
     margin: 50px auto;
     padding: 40px;
     border: 2px solid #d4af37; /* Altın renk */
@@ -1260,7 +1260,7 @@ YAN TUŞLARA BASINCA SİTE GÖVDESİNİN ORTADAKİ ÇERÇEVESİ
     background: rgba(18, 13, 4, 0.7);
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.2);
     animation: glow 2s infinite alternate;
-    min-height: 300px;
+    min-height: 900px;
 }
 
 @keyframes glow {
