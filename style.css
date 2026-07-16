@@ -13,6 +13,148 @@
 }
 
 /* ==========================================================
+   SİTE DİL DEĞİŞTİRİCİ
+========================================================== */
+
+/* DİL BUTONU */
+
+.language-switcher{
+
+position:fixed;
+
+top:20px;
+right:90px;
+
+z-index:1000;
+
+}
+
+/* BUTON */
+
+#language-btn{
+
+width:54px;
+height:54px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:18px;
+
+border:1px solid rgba(212,175,55,.7);
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(14px);
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:
+0 0 18px rgba(212,175,55,.08);
+
+}
+
+#language-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 0 10px rgba(255,235,170,.6),
+0 0 22px rgba(212,175,55,.5);
+
+}
+
+#language-btn svg{
+
+width:24px;
+height:24px;
+
+fill:none;
+
+stroke:#f4df8a;
+
+stroke-width:1.8;
+
+stroke-linecap:round;
+
+stroke-linejoin:round;
+
+filter:
+drop-shadow(0 0 2px rgba(255,220,120,.4))
+drop-shadow(0 0 6px rgba(212,175,55,.45));
+
+animation:iconGlow 3s ease-in-out infinite;
+
+}
+
+/* MENÜ */
+
+.language-menu{
+
+position:absolute;
+
+top:65px;
+right:0;
+
+min-width:185px;
+
+padding:10px;
+
+border-radius:18px;
+
+display:none;
+
+background:rgba(25,20,8,.95);
+
+backdrop-filter:blur(16px);
+
+border:1px solid rgba(212,175,55,.45);
+
+box-shadow:
+0 0 25px rgba(212,175,55,.15);
+
+}
+
+.language-menu.open{
+
+display:block;
+
+}
+
+.language-item{
+
+padding:10px 14px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+color:#f4df8a;
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:18px;
+
+transition:.25s;
+
+}
+
+.language-item:hover{
+
+background:rgba(212,175,55,.12);
+
+padding-left:20px;
+
+}
+
+/* ==========SİTE DİL DEĞİŞTİRİCİ  SONU======================== */
+
+
+
+/* ==========================================================
    TEMA DEĞİŞTİRİCİNİN RENKLERİ
 ========================================================== */
 
