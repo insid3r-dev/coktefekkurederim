@@ -51,7 +51,15 @@ document.querySelectorAll(".language-item").forEach(item => {
 
     item.addEventListener("click", () => {
 
-        const page = item.dataset.page;
+                const pages = {
+            tr:"index.html",
+            en:"index-eng.html",
+            es:"index-es.html",
+            ru:"index-ru.html",
+            de:"index-de.html",
+            pt:"index-pt.html",
+            fr:"index-fr.html"
+        };
 
         window.location.href = page;
 
