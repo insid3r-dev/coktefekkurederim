@@ -47,6 +47,33 @@ languageMenu.classList.remove("open");
 
 });
 
+document.querySelectorAll(".language-item").forEach(item=>{
+
+item.addEventListener("click",()=>{
+
+const lang=item.dataset.lang;
+
+const interval=setInterval(()=>{
+
+const combo=document.querySelector(".goog-te-combo");
+
+if(combo){
+
+combo.value=lang;
+combo.dispatchEvent(new Event("change"));
+
+clearInterval(interval);
+
+languageMenu.classList.remove("open");
+
+}
+
+},300);
+
+});
+
+});
+
 
 
 
