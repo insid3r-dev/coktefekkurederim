@@ -29,28 +29,19 @@ z-index:1000;
 
 }
 
-    position: fixed;        /* Ekranın en üstüne kilitler */
-    top: 5px;              /* Tavandan tam 20px boşluk */
-    left: 50%;              /* Ekranın tam ortasına git */
-        /* İnce ayar: Başlığının genişliğinin yarısını buraya yaz */
-    /* Başlığın 500px genişliğindeyse, buraya 250px + 20px (boşluk) ekle */
-    margin-left: 430px;
-    z-index: 999999;/* Butonun her şeyin üstünde kalması için */
-
-
 
 /* BUTON */
 
 #language-btn{
 
-width:54px;
-height:54px;
+width:44px;
+height:44px;
 
 display:flex;
 align-items:center;
 justify-content:center;
 
-border-radius:18px;
+border-radius:50%;
 
 border:1px solid rgba(212,175,55,.7);
 
