@@ -286,7 +286,7 @@ body::before {
 
     display:flex;
     align-items:center;
-    justify-content:center;
+    
 
     overflow:hidden;
 
@@ -311,6 +311,11 @@ body::before {
 
 .frame-btn .icon{
 
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    
     width:54px;
     min-width:54px;
 
