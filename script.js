@@ -297,6 +297,26 @@ setTimeout(()=>p.remove(),900);
 
 });
 
+document.querySelectorAll('.frame-btn').forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        const contentArea = document.getElementById('content-area');
+        
+        // Eğer Ana Sayfa (ilk buton) ise sayfayı yenile veya orijinal içeriği geri yükle
+        if (index === 0) {
+            location.reload(); 
+            return;
+        }
+
+        // Diğer butonlar için orta kısmı değiştir
+        contentArea.innerHTML = `
+            <div class="gold-frame">
+                <h3 style="color: #d4af37; text-align: center;">Yakında Eklenecek Bölüm</h3>
+                <p style="color: #f8f5ea; text-align: center;">Buraya daha sonra içerik eklenecektir.</p>
+            </div>
+        `;
+    });
+});
+
 // ==========================================================
 
 
