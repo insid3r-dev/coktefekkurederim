@@ -909,6 +909,22 @@ scale(1.8);
 
 }
 
+.gallery-item{
+
+    aspect-ratio:9/16;
+    overflow:hidden;
+    border-radius:16px;
+
+}
+
+.gallery-item img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+
+}
 /* ==========GALERİ SAYFASI SONU================================== */
 /* ============================================================== */
 
