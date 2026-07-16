@@ -33,6 +33,23 @@ body[data-theme="light"]{
 --heading:#111;
 --subheading:#555;
 }
+/* Sadece light tema */
+
+body[data-theme="light"] .frame-btn{
+    border:1px solid rgba(92,68,10,.85);
+}
+
+body[data-theme="light"] .frame-btn .label{
+    color:#4b3908;
+}
+
+body[data-theme="light"] .frame-btn .icon svg{
+    stroke:#5b4612;
+}
+
+
+
+
 
 body[data-theme="blue"]{
 
