@@ -47,7 +47,17 @@ languageMenu.classList.remove("open");
 
 });
 
+document.querySelectorAll(".language-item").forEach(item => {
 
+    item.addEventListener("click", () => {
+
+        const page = item.dataset.page;
+
+        window.location.href = page;
+
+    });
+
+});
 
 
 
