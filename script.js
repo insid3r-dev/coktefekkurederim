@@ -290,12 +290,25 @@ document.querySelectorAll(".frame-btn").forEach((btn, index) => {
         }
 
         // --- 2. İçerik Değiştirme Mantığı (Eklediğimiz kısım) ---
-        const contentArea = document.getElementById('content-area');
-        
-        if (index === 0) { // Ana Sayfa
-           // Ana Sayfa: Hafızaya aldığımız orijinal içeriği geri yükle
-            contentArea.innerHTML = originalContent;
+// Kodunuzun en başında, sayfa yüklendiğinde bir kez çalışacak olan kısım
+const contentArea = document.getElementById('content-area');
+const homeContent = contentArea.innerHTML; // Ana sayfa içeriğini olduğu gibi kopyaladık
+
+document.querySelectorAll(".frame-btn").forEach((btn, index) => {
+    btn.addEventListener("click", e => {
+        // --- 1. Görsel Efektleriniz (Aynı kalıyor) ---
+        // ... (spark/clicked efekt kodları) ...
+
+        // --- 2. İçerik Değiştirme Mantığı ---
+        if (index === 0) { 
+            // ANA SAYFA: Kaydettiğimiz orijinal içeriği geri yükle
+            contentArea.innerHTML = homeContent;
             localStorage.setItem('panelDurumu', 'acik');
+            initBookAnimations();
+            
+            // ÖNEMLİ: Eğer içerik geri yüklendiğinde kitap animasyonları 
+            // tekrar başlamıyorsa, animasyon fonksiyonunuzu burada tekrar çağırın.
+            // Örn: initBookAnimations();
 
             
         } else { // Diğerleri
