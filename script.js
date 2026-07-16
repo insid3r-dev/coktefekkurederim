@@ -25,6 +25,32 @@ if (musicBtn && bgMusic) {
 }
 
 /* ==========================================================
+   SİTE DİL DEĞİŞTİRİCİ BUTONU
+========================================================== */
+
+const languageBtn=document.getElementById("language-btn");
+const languageMenu=document.getElementById("language-menu");
+
+languageBtn.addEventListener("click",()=>{
+
+languageMenu.classList.toggle("open");
+
+});
+
+document.addEventListener("click",e=>{
+
+if(!e.target.closest(".language-switcher")){
+
+languageMenu.classList.remove("open");
+
+}
+
+});
+
+
+
+
+/* ==========================================================
    TEMA SEÇİCİ BUTONU
 ========================================================== */
 
