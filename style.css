@@ -762,6 +762,20 @@ text-align:justify;
     color:#000;
 
 }
+
+.pdf-viewer{
+
+width:100%;
+
+height:90vh;
+
+border:none;
+
+border-radius:16px;
+
+background:#f8f1d7;
+
+}
 /* ==========MÜELLİF SAYFASI BAŞI================================== */
 /* ============================================================== */
 
