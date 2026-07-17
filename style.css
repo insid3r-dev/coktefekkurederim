@@ -634,6 +634,30 @@ scale(1.8);
 
 }
 
+#subject-page .author-frame p{
+
+    text-align:justify;
+    font-size:1.12rem;
+    line-height:1.9;
+
+}
+
+#subject-page .author-frame h1,
+#subject-page .author-frame h2{
+
+    text-align:center;
+
+}
+
+#subject-page .author-frame::before{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:18px;
+    pointer-events:none;
+}
+
 /* ==========MÜELLİF SAYFASI BAŞI================================== */
 /* ============================================================== */
 
