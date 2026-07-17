@@ -627,7 +627,7 @@ align-items:flex-start;
 
 .subjects-sidebar{
 
-width:300px;
+width:170px;
 flex-shrink:0;
 
 }
@@ -650,7 +650,7 @@ margin:0;
 
 .subjects-list li{
 
-padding:14px 18px;
+padding:10px 12px;
 
 margin-bottom:10px;
 
@@ -664,7 +664,7 @@ border:1px solid rgba(212,175,55,.25);
 
 transition:.3s;
 
-font-size:1.1rem;
+font-size:1rem;
 
 }
 
@@ -694,8 +694,8 @@ color:#000;                  /* Tam siyah yazı */
 
 border-radius:18px;
 
-padding:60px;
-
+padding:0px;
+overflow:hidden;
 min-height:850px;
 
 border:1px solid #d8c58a;
@@ -767,13 +767,27 @@ text-align:justify;
 
 width:100%;
 
-height:90vh;
+height:calc(100vh - 140px);
 
 border:none;
 
-border-radius:16px;
+display:block;
 
 background:#f8f1d7;
+
+}
+
+.reader-title{
+
+margin:22px 0 12px;
+
+text-align:center;
+
+font-family:"Cinzel Decorative",serif;
+
+font-size:2rem;
+
+color:#000;
 
 }
 /* ==========MÜELLİF SAYFASI BAŞI================================== */
