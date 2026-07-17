@@ -688,17 +688,21 @@ border-color:var(--gold);
 
 flex:1;
 
-background:#f8f3df;
+background:#f8f1d7;          /* Göz yormayan kitap kağıdı */
+
+color:#000;                  /* Tam siyah yazı */
 
 border-radius:18px;
 
-padding:55px;
+padding:60px;
 
 min-height:850px;
 
-color:#2d2d2d;
+border:1px solid #d8c58a;
 
-box-shadow:0 10px 40px rgba(0,0,0,.25);
+box-shadow:
+0 10px 30px rgba(0,0,0,.18),
+inset 0 0 35px rgba(255,255,255,.35);
 
 }
 
@@ -708,28 +712,56 @@ margin-top:0;
 
 font-family:"Cinzel Decorative",serif;
 
-color:#8b6800;
+color:#000;
 
 }
 
 .subject-reader h2{
 
-color:#8b6800;
+color:#000;
+
+}
+
+.subject-reader h3{
+
+color:#000;
 
 }
 
 .subject-reader p{
 
-font-size:1.25rem;
+font-size:1.28rem;
 
-line-height:1.9;
+line-height:2;
 
-color:#333;
+color:#000;
 
 text-align:justify;
 
 }
+/* Başlıklar sola yaslı */
+#reader-content h1,
+#reader-content h2,
+#reader-content h3,
+#reader-content h4,
+#reader-content h5,
+#reader-content h6{
 
+    text-align:left;
+    color:#000;
+
+}
+
+/* Metinler iki yana yaslı */
+#reader-content p{
+
+    text-align:justify;
+    text-justify:inter-word;
+    text-align-last:left;
+    line-height:2;
+    color:#000;
+
+}
 /* ==========MÜELLİF SAYFASI BAŞI================================== */
 /* ============================================================== */
 
