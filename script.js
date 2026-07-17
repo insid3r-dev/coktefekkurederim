@@ -347,7 +347,39 @@ document.querySelectorAll(".frame-btn").forEach((btn, index) => {
 });
 // ==========================================================
 
+/* ==========================================================
+   KONULAR SAYFASI
+========================================================== */
 
+const reader = document.getElementById("reader-content");
+
+document.querySelectorAll(".subjects-list li").forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        document.querySelectorAll(".subjects-list li").forEach(li => {
+            li.classList.remove("active");
+        });
+
+        item.classList.add("active");
+
+        const file = item.dataset.file;
+
+        fetch(file)
+            .then(response => response.text())
+            .then(html => {
+                reader.innerHTML = html;
+            })
+            .catch(() => {
+                reader.innerHTML = `
+                    <h1>Hata</h1>
+                    <p>Bu konu henüz eklenmedi.</p>
+                `;
+            });
+
+    });
+
+});
 
 
 
