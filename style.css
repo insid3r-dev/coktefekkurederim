@@ -1980,7 +1980,9 @@ footer {
 
     text-align:center;
 
-    margin: 0 0 22px 0;
+    max-width: 1000px;
+    margin: 40px auto;
+    margin-top:35px;
 
     font-family: "Cinzel Decorative", serif;
 
@@ -1996,13 +1998,11 @@ footer {
 
     line-height:1.5;
 
-    max-width:900px;
-
 }
 
 .portal-marquee{
 
-    max-width: 900px;
+    max-width: 1000px;
     margin: 40px auto;
     margin-top:35px;
     overflow:hidden;
@@ -2034,7 +2034,7 @@ footer {
 
     border-radius:999px;
 
-    background:#fff;
+    background:#fff2c2;
 
     border:1px solid rgba(212,175,55,.35);
 
@@ -2104,7 +2104,7 @@ footer {
 .dot{
 
     color:#d4af37;
-    font-size:18px;
+    font-size:20px;
     margin:0 5px;
 
 }
