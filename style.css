@@ -1246,6 +1246,9 @@ header {
     z-index: 5;
 }
 
+/*=========================================================
+  İKİLİ KİTAP BAŞLIĞI
+=========================================================*/
 /* =====BAŞLIK ÇOK TEFEKKÜR EDERİM====================================== */
 h1 {
     font-family: "Cinzel Decorative", serif;
@@ -1295,22 +1298,22 @@ h1 {
 
 }
 
-/*=========================================================
-  İKİLİ KİTAP BAŞLIĞI
-=========================================================*/
+.title-column.left{
 
-.dual-book-title{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    gap:55px;
-
-    width:min(1350px,95%);
-    margin:0 auto;
+    justify-self:end;
+    margin-right:25px;
 
 }
+
+.title-column.right{
+
+    justify-self:start;
+    margin-left:25px;
+
+}
+
+
+
 
 .book-title-left,
 .book-title-right{
