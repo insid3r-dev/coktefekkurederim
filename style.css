@@ -1258,7 +1258,7 @@ h1 {
     color: var(--heading);
     text-shadow: 0 0 25px rgba(212,175,55,0.25);
     letter-spacing: 2.5px;
-    line-height:1;
+    line-height:1.1;
 }
 
 
@@ -1290,7 +1290,7 @@ h1 {
 .title-column.left{
 
     justify-self:end;
-    margin-right:100px;
+    margin-right:110px;
 
 }
 
@@ -1381,7 +1381,7 @@ h2 {
     font-weight: 400;
     color: #c9b080;
     color: var(--heading);
-    margin: 10px 0 0;
+    margin: 25px 0 0;
     letter-spacing: 4px;
 }
 
