@@ -1335,6 +1335,8 @@ h1 {
 
     width:1px;
     height:105px;
+    position:relative;
+    left:-20px;
 
     background:linear-gradient(
         to bottom,
