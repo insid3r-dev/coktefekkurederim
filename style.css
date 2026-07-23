@@ -1991,6 +1991,11 @@ footer {
 
 }
 
+.portal img{
+    height:22px;
+    width:auto;
+}
+
 .portal{
     display:flex;
     align-items:center;
@@ -2005,6 +2010,10 @@ footer {
     border:1px solid rgba(212,175,55,.18);
 
     backdrop-filter:blur(8px);
+}
+
+.portal.calameo{
+    background:#111;
 }
 
 .portal:hover{
