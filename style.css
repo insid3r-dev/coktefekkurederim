@@ -1323,6 +1323,18 @@ h1 {
 
 }
 
+.book-title-right{
+
+    color:#801c03;
+
+    -webkit-text-stroke:0.8px rgba(255,235,170,.9);
+
+    text-shadow:
+        0 0 10px rgba(220,143,50,.35),
+        0 0 20px rgba(212,175,55,.18);
+
+}
+
 .title-separator{
 
     width:1px;
