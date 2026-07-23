@@ -2053,10 +2053,7 @@ footer {
     background:#1f1b0d;
 }
 
-.portal:hover{
-    transform:translateY(-2px);
-    border-color:#d4af37;
-}
+
 
 .marquee{
 
