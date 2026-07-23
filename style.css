@@ -1257,6 +1257,60 @@ h1 {
     letter-spacing: 2px;
 }
 
+/* =====BAŞLIĞI İKİLEDİĞİMİZ İÇİN ALTINA EKLİYORUM EZSİN KODU DİYE====================================== */
+
+/*=========================================================
+  İKİLİ KİTAP BAŞLIĞI
+=========================================================*/
+
+.dual-book-title{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:55px;
+
+    width:min(1350px,95%);
+    margin:0 auto;
+
+}
+
+.book-title-left,
+.book-title-right{
+
+    flex:1;
+
+    text-align:center;
+
+    margin:0;
+
+}
+
+.title-separator{
+
+    width:1px;
+    height:95px;
+
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        rgba(212,175,55,.9),
+        rgba(255,235,170,1),
+        rgba(212,175,55,.9),
+        transparent
+    );
+
+    box-shadow:
+        0 0 12px rgba(212,175,55,.45);
+
+}
+
+
+
+
+
+
 /* =====BAŞLIK ALTINDAKİ ASLAN ÇAKMAK====================================== */
 h2 {
     font-family: "Cormorant Garamond", serif;
