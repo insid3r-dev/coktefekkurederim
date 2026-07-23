@@ -1973,6 +1973,126 @@ footer {
        }
    }
 
+/* ==========================================================
+   KAYAN ŞERİT AYARLARI
+========================================================== */
+
+.portal-marquee{
+
+    width:100%;
+    margin-top:35px;
+    overflow:hidden;
+
+    border-top:1px solid rgba(212,175,55,.18);
+    border-bottom:1px solid rgba(212,175,55,.18);
+
+    padding:18px 0;
+
+}
+
+.marquee{
+
+    overflow:hidden;
+    white-space:nowrap;
+    margin:8px 0;
+
+}
+
+.marquee-track{
+
+    display:inline-flex;
+    align-items:center;
+    gap:18px;
+    width:max-content;
+
+}
+
+.marquee-left .marquee-track{
+
+    animation:scrollLeft 85s linear infinite;
+
+}
+
+.marquee-right .marquee-track{
+
+    animation:scrollRight 85s linear infinite;
+
+}
+
+.marquee-track span{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:15px;
+    color:#f3f0e4;
+
+    font-family:"Cormorant Garamond",serif;
+
+}
+
+.marquee-track img{
+
+    width:22px;
+    height:22px;
+
+    object-fit:contain;
+
+    opacity:.92;
+
+}
+
+.dot{
+
+    color:#d4af37;
+    font-size:18px;
+    margin:0 5px;
+
+}
+
+@keyframes scrollLeft{
+
+    from{
+
+        transform:translateX(-50%);
+
+    }
+
+    to{
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes scrollRight{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-50%);
+
+    }
+
+}
+
+
+/* ==========================================================
+   KAYAN ŞERİT AYARLARI   SONU
+========================================================== */
+
+
+
+
+
+
 
 /* ==========================================================
 /* ==========================================================
