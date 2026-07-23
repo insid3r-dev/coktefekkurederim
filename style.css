@@ -1979,7 +1979,8 @@ footer {
 
 .portal-marquee{
 
-    width:100%;
+    max-width: 900px;
+    margin: 40px auto;
     margin-top:35px;
     overflow:hidden;
 
@@ -1988,6 +1989,27 @@ footer {
 
     padding:18px 0;
 
+}
+
+.portal{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(212,175,55,.18);
+
+    backdrop-filter:blur(8px);
+}
+
+.portal:hover{
+    transform:translateY(-2px);
+    border-color:#d4af37;
 }
 
 .marquee{
@@ -2080,6 +2102,8 @@ footer {
         transform:translateX(-50%);
 
     }
+
+    
 
 }
 
